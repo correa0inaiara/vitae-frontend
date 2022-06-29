@@ -1,4 +1,4 @@
-export const apiURL = 'http://localhost:8000';
+export const apiURL = process.env.REACT_APP_API_URL;
 
 /* LOGIN */
 
