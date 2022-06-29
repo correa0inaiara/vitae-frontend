@@ -1,9 +1,9 @@
 export const navigationItems = {
 	menuLogado: [
 		{
-			name: 'Perfil ',
-			to: '/perfil',
-			text: 'perfil'
+			name: 'Dashboard ',
+			to: '/dashboard',
+			text: 'dashboard'
 		},
 		{
 			name: 'Curriculos ',
@@ -12,7 +12,7 @@ export const navigationItems = {
 			role: 'Candidato'
 		},
 		{
-			name: 'Agendamentos ',
+			name: 'Visualizar Agendamentos ',
 			to: '/agendamentos',
 			text: 'agendamentos'
 		},

@@ -30,7 +30,7 @@ const Login = () => {
 			if (user.tipoUsuario === 'Administrador') {
 				navigate("/relatorios")
 			} else {
-				navigate("/perfil")
+				navigate("/dashboard")
 			}
 		}
 	}
@@ -64,16 +64,18 @@ const Login = () => {
 					id="senhaField"
 				/>
 			</label>
-			<button 
-				type="submit" 
-				className="button"
-				disabled={!email || !senha}
-			>
-				Logar
-			</button>
-			{<Link to='/cadastro'>
-				<Button buttonClass='button button--green' buttonText='Cadastre-se' />
-			</Link>}
+			<div className="buttons">
+				<button 
+					type="submit" 
+					className="button"
+					disabled={!email || !senha}
+				>
+					Logar
+				</button>
+				{<Link to='/cadastro'>
+						<Button buttonClass='button button--green' buttonText='Cadastre-se' />
+				</Link>}
+			</div>
 
 			<SocialLogin page="login" />
 		</form>

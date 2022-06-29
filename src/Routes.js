@@ -21,7 +21,6 @@ import {ProtectedRoutes} from './components/ProtectedRoutes';
 import Home from './pages/Home';
 import { ProtectedLayout } from './pages/ProtectedLayout';
 import { HomeLayout } from './pages/HomeLayout';
-import Perfil from './pages/Perfil';
 import Questionarios from './components/Questionarios';
 import { AcessoNegado } from './pages/AcessoNegado';
 import Relatorios from './components/Relatorios';
@@ -32,6 +31,7 @@ import ProcessoSeletivoEtapa1 from './components/ProcessoSeletivoEtapa1';
 import ProcessoSeletivoEtapa2 from './components/ProcessoSeletivoEtapa2';
 import ProcessoSeletivoEtapa3 from './components/ProcessoSeletivoEtapa3';
 import CandidaturaDetalhe from './components/CandidaturaDetalhe';
+import Dashboard from './pages/Dashboard';
 
 const MainRoutes = () => (
 	<Routes>
@@ -45,7 +45,7 @@ const MainRoutes = () => (
 		{/* Protected Routes */}
 		<Route path='/' element={<ProtectedLayout />}>
 
-			<Route path='perfil' element={<Perfil />} />
+			<Route path='dashboard' element={<Dashboard />} />
 			
 			<Route path='curriculos' element={<ProtectedRoutes role="Candidato" />}>
 				<Route path='/curriculos' element={<Curriculos />} />

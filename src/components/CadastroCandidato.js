@@ -757,22 +757,27 @@ class CadastroCandidato extends React.Component {
 							{this.state.validations.perfil.invalido ? <span className="error-message">Campo inválido</span> : '' }
 						</div>
 					</label>
+					<div className="buttons">
+						<button
+							disabled={!this.state.perfil && !this.state.nome}
+							onClick={this.handleAddRedeSocial} 
+							type="button" 
+							className="button">
+							Adicionar Rede Social
+						</button>
+					</div>
+				</div>
+				<hr />
+				<div className="buttons">
 					<button
-						disabled={!this.state.perfil && !this.state.nome}
-						onClick={this.handleAddRedeSocial} 
-						type="button" 
+						disabled={!this.state.validacaoConcluida} 
+						type="submit" 
 						className="button">
-						Adicionar Rede Social
+						Me cadastre
 					</button>
 				</div>
-				<button
-					disabled={!this.state.validacaoConcluida} 
-					type="submit" 
-					className="button">
-					Me cadastre
-				</button>
 				{this.state.registered && (
-					<Navigate to='/perfil' replace={true} />
+					<Navigate to='/dashboard' replace={true} />
 				)}
 			</form>
 		)

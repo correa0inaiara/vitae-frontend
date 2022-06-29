@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 	const login = async (data) => {
     	console.log("🚀 ~ file: useAuth.js ~ line 12 ~ login ~ data", data)
 		setUser(data);
-		navigate("/dashboard/perfil");
+		navigate("/dashboard/dashboard");
 	};
 
 	// call this function to sign out logged in user

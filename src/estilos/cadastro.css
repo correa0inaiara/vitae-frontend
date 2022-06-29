@@ -21,6 +21,7 @@
 
 .toggle-tipo-usuario {
 	display: flex;
+	align-items: center;
 	flex-direction: column;
 	margin: 20px 0;
 }
@@ -30,13 +31,12 @@
 }
 
 hr {
-	margin: 10px 0;
 	border: 0;
 	clear:both;
 	display:block;
 	width: 100%;               
-	background-color: var(--background-secondary-color);
-	height: 1px;
+	background-color: var(--background-box-shadow-color);
+	height: 1.5px;
 }
 
 @media only screen and (min-width: 1024px) {

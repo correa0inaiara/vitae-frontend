@@ -1,0 +1,15 @@
+.mensagem {
+	text-align: center;
+	margin: 10px 0;
+	line-height: 1.3;
+	color: var(--background-secondary-color);
+}
+
+.mensagem--big-margin {
+	margin: 40px 0;
+}
+
+.dashboard-list__item {
+	margin: 50px 0;
+	display: block;
+}

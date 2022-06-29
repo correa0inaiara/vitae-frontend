@@ -3,6 +3,7 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	margin: 30px 0 0 0;
+	align-items: center;
 }
 
 .buttons a {
@@ -10,7 +11,7 @@
 	color: var(--background-secondary-color);
 	font-family: 'OpenSans', sans-serif;
 	font-size: 13px;
-	margin: auto 0;
+	/* margin: auto 0; */
 }
 
 .button {
@@ -22,9 +23,11 @@
 	text-align: center;
 	border: 1px solid var(--background-secondary-color);
 	cursor: pointer;
-	margin: 10px 0; 
+	margin: 0 0 20px 0;
 	width: 100%;
 	font-size: 15px;
+	min-width: 230px;
+    max-width: 230px;
 }
 
 .button[disabled] {
@@ -55,6 +58,17 @@
 	color: var(--button-secondary-color);
 }
 
+.button--blue {
+	border: 2px solid var(--button-dark-blue-color);
+	background-color: var(--button-blue-color);
+	box-shadow: 0px 3px 2px 2px var(--button-dark-blue-color);
+}
+
+.button--blue:hover {
+	border: 2px solid var(--button-dark-blue-color);
+	color: var(--button-dark-blue-color);
+}
+
 .button--purple {
 	border: 2px solid var(--button-purple-color-border);
 	background-color: var(--button-purple-color);
@@ -78,15 +92,15 @@
 
 @media only screen and (min-width: 768px) {
 	.buttons {
-		margin: 50px auto;
+		margin: 25px auto 0;
 		flex-direction: row;
 		flex-wrap: wrap;
 		max-width: 250px;
 	}
 
 	.button {
-		padding: 10px 0px;
-		margin-right: 15px;
+		/* padding: 10px 0px; */
+		/* margin-right: 15px; */
 	}
 }
 

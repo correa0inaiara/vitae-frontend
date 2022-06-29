@@ -36,7 +36,7 @@ const SocialLogin = ({page}) => {
 				setMessage('')
 				
 				if (page === 'login') {
-					navigation("/perfil")
+					navigation("/dashboard")
 				}
 			} else if (result.status === 404) {
 				setMessage('Você ainda não se cadastrou.')
@@ -66,7 +66,7 @@ const SocialLogin = ({page}) => {
 			setMessage('')
 			
 			if (page === 'login') {
-				navigation("/perfil")
+				navigation("/dashboard")
 			}
 		}
 	
@@ -109,11 +109,13 @@ const SocialLogin = ({page}) => {
 			<p className="login-social__message">{message}</p>
 			<div id='signIn'></div>
 			{Object.keys(loginSocial).length != 0 &&
-				<button
-					id='signOut'
-					className='button button--grey'
-					onClick={(e) => handleSignOut(e)}
-				>Sign Out</button>
+				<div className="buttons">
+					<button
+						id='signOut'
+						className='button button--grey'
+						onClick={(e) => handleSignOut(e)}
+					>Sign Out</button>
+				</div>
 			}
 		</div>
 	)

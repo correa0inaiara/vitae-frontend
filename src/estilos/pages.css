@@ -3,6 +3,9 @@
 html,
 body,
 #root {
+    min-height: 100%;
+    max-height: 100%;
+    font-family: sans-serif;
     position: relative;
     background: var(--background-primary-color);
 }
@@ -11,7 +14,7 @@ body,
     margin: 10px 20px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 96vh;
 }
 
 .wrapper {
