@@ -34,7 +34,7 @@ a.detalhe-item__link--etapa {
 	text-align: center;
 }
 
-.detalhe-item__subtitens:not(:last-child) {
+.detalhe-item__subitems:not(:last-child) {
 	border-bottom: 1px solid var(--background-terciary-color);
     margin: 0 0 20px 0;
 }

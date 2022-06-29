@@ -136,12 +136,12 @@ const ProcessoSeletivoEtapa2 = () => {
 									<div className="buttons">
 										<button 
 											onClick={handleEdit.bind(this, item)}
-											className="button button--green">
+											className="button button--yellow">
 												Editar
 										</button>
 										<button 
 											onClick={handleDelete.bind(this, item)}
-											className="button button--green">
+											className="button button--red">
 												Delete
 										</button>
 									</div>

@@ -57,7 +57,7 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 					{
 						educacao && educacao.length > 0 ? (
 							educacao.map(item =>
-								<div key={item.educacaoid} className="detalhe-item__subtitens">
+								<div key={item.educacaoid} className="detalhe-item__subitems">
 									<div className="detalhe-item__subtitem">
 										<p className="detalhe-item__label">Educação:</p>
 										<p className="detalhe-item__value">{item.educacao}</p>
@@ -84,7 +84,7 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 					{
 						cursos && cursos.length > 0 ? (
 							cursos.map(item =>
-								<div key={item.cursoid} className="detalhe-item__subtitens">
+								<div key={item.cursoid} className="detalhe-item__subitems">
 									<div className="detalhe-item__subtitem">
 										<p className="detalhe-item__label">Curso:</p>
 										<p className="detalhe-item__value">{item.curso}</p>
@@ -107,7 +107,7 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 					{
 						experiencias && experiencias.length > 0 ? (
 							experiencias.map(item =>
-								<div key={item.experienciaid} className="detalhe-item__subtitens">
+								<div key={item.experienciaid} className="detalhe-item__subitems">
 									<div className="detalhe-item__subtitem">
 										<p className="detalhe-item__label">Experiência:</p>
 										<p className="detalhe-item__value">{item.cargo}</p>
@@ -138,7 +138,7 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 					{
 						habilidades && habilidades.length > 0 ? (
 							habilidades.map(item =>
-								<div key={item.habilidadeid} className="detalhe-item__subtitens">
+								<div key={item.habilidadeid} className="detalhe-item__subitems">
 									<div className="detalhe-item__subtitem">
 										<p className="detalhe-item__label">Habilidades:</p>
 										<p className="detalhe-item__value">{item.habilidade}</p>
@@ -157,7 +157,7 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 					{
 						idiomas && idiomas.length > 0 ? (
 							idiomas.map(item =>
-								<div key={item.idiomaid} className="detalhe-item__subtitens">
+								<div key={item.idiomaid} className="detalhe-item__subitems">
 									<div className="detalhe-item__subtitem">
 										<p className="detalhe-item__label">Idiomas:</p>
 										<p className="detalhe-item__value">{item.idioma}</p>
@@ -175,12 +175,12 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 			<div className="buttons">
 				<button 
 					onClick={handleEdit}
-					className="button button--green">
+					className="button button--yellow">
 						Editar
 					</button>
 				<button 
 					onClick={handleDelete}
-					className="button button--green">
+					className="button button--red">
 						Delete
 					</button>
 			</div>

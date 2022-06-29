@@ -110,7 +110,7 @@ const CandidaturaDetalhe = () => {
 								{
 									educacao && educacao.length > 0 ? (
 										educacao.map(item =>
-											<div key={item.educacaoid} className="detalhe-item__subtitens">
+											<div key={item.educacaoid} className="detalhe-item__subitems">
 												<div className="detalhe-item__subtitem">
 													<p className="detalhe-item__label">Educação:</p>
 													<p className="detalhe-item__value">{item.educacao}</p>
@@ -137,7 +137,7 @@ const CandidaturaDetalhe = () => {
 								{
 									cursos && cursos.length > 0 ? (
 										cursos.map(item =>
-											<div key={item.cursoid} className="detalhe-item__subtitens">
+											<div key={item.cursoid} className="detalhe-item__subitems">
 												<div className="detalhe-item__subtitem">
 													<p className="detalhe-item__label">Curso:</p>
 													<p className="detalhe-item__value">{item.curso}</p>
@@ -160,7 +160,7 @@ const CandidaturaDetalhe = () => {
 								{
 									experiencias && experiencias.length > 0 ? (
 										experiencias.map(item =>
-											<div key={item.experienciaid} className="detalhe-item__subtitens">
+											<div key={item.experienciaid} className="detalhe-item__subitems">
 												<div className="detalhe-item__subtitem">
 													<p className="detalhe-item__label">Experiência:</p>
 													<p className="detalhe-item__value">{item.cargo}</p>
@@ -191,7 +191,7 @@ const CandidaturaDetalhe = () => {
 								{
 									habilidades && habilidades.length > 0 ? (
 										habilidades.map(item =>
-											<div key={item.habilidadeid} className="detalhe-item__subtitens">
+											<div key={item.habilidadeid} className="detalhe-item__subitems">
 												<div className="detalhe-item__subtitem">
 													<p className="detalhe-item__label">Habilidades:</p>
 													<p className="detalhe-item__value">{item.habilidade}</p>
@@ -210,7 +210,7 @@ const CandidaturaDetalhe = () => {
 								{
 									idiomas && idiomas.length > 0 ? (
 										idiomas.map(item =>
-											<div key={item.idiomaid} className="detalhe-item__subtitens">
+											<div key={item.idiomaid} className="detalhe-item__subitems">
 												<div className="detalhe-item__subtitem">
 													<p className="detalhe-item__label">Idiomas:</p>
 													<p className="detalhe-item__value">{item.idioma}</p>

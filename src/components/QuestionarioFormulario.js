@@ -11,9 +11,9 @@ export class QuestionarioFormulario extends Component {
 		const editing = temProps && props.edit ? true : false
 
 		this.state = {
-			editQuestionsArr: [],
 			editingQuestionIndex: 0,
 			editQuestion: false,
+			noQuestions: false,
 			user: [],
 			nome: editing ? props.data.nome : '',
 			descricao: editing ? props.data.descricao : '',
@@ -177,7 +177,7 @@ export class QuestionarioFormulario extends Component {
 
 		if (this.props.edit) {
 			if (this.state.editQuestion) {
-				const questoesObj = this.state.editQuestionsArr
+				const questoesObj = this.state.questoes
 				const index = this.state.editingQuestionIndex
 				questoesObj[index].questao = this.state.questao
 				this.setState({
@@ -220,16 +220,6 @@ export class QuestionarioFormulario extends Component {
 	}
 
 	clearForm() {
-		// const formStates = ['nome', 'descricao', 'prazo']
-		// Object.keys(this.state).map((item) => {
-		// 	formStates.map((item2) => {
-		// 		if (item === item2) {
-		// 			this.setState((state) => {
-		// 				return { state: '' }
-		// 			})
-		// 		}
-		// 	})
-		// })
 		this.setState({
 			nome: '',
 			descricao: '',
@@ -238,12 +228,20 @@ export class QuestionarioFormulario extends Component {
 		})
 	}
 
-	async handleEditSubmit(questionarioId, token, data, questoes) {
+	async handleEditSubmit(questionarioId, token, data) {
+		const questoes = {
+			questoes: this.state.questoes,
+			questoesAdicionadas: this.state.questoesAdicionadas,
+			questoesExcluidas: this.state.questoesExcluidas
+		}
+
 		const update = {
 			questionario: data,
 			questoes
 		}
+
 		const result = await editQuestionnaire(questionarioId, token, update)
+        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 253 ~ QuestionarioFormulario ~ handleEditSubmit ~ result", result)
 
 		if (result) {
 			this.clearForm();
@@ -259,19 +257,15 @@ export class QuestionarioFormulario extends Component {
 			descricao: this.state.descricao,
 			prazo: this.state.prazo
 		}
-
-		const questoes = {
-			questoes: this.state.questoes,
-			questoesAdicionadas: this.state.questoesAdicionadas,
-			questoesExcluidas: this.state.questoesExcluidas
-		}
 		const token = this.state.user.token
 		const usuarioId = this.state.user.usuarioId
-		
-		
-		if (this.props.edit) {
+		const questoes = this.state.questoes
+
+		if (this.state.noQuestions) {
+			this.props.deletarQuestionario()
+		} else if (this.props.edit) {
 			const questionarioId = this.props.data.questionarioId
-			this.handleEditSubmit(questionarioId, token, data, questoes)
+			this.handleEditSubmit(questionarioId, token, data)
 		} else {
 			const result = registerQuestionnarie(data, questoes, usuarioId, token)
 			if (result) {
@@ -281,26 +275,17 @@ export class QuestionarioFormulario extends Component {
 			else this.setState({created: false})
 		}
 
-
 		this.clearForm()
 		
 	}
 
 	handleEditQuestion(index, questao) {
-		
 		this.setState((state) => {
 			return {
 				editingQuestionIndex: index,
 				editQuestion: true, 
 				questao: questao.questao 
 			} 
-		})
-		const newQuestionsObj = {
-			questoesId: questao.questoesid,
-			questao: questao.questao
-		}
-		this.setState({
-			editQuestionsArr: [...this.state.editQuestionsArr, newQuestionsObj]
 		})
 	}
 
@@ -313,6 +298,12 @@ export class QuestionarioFormulario extends Component {
 
 		
 		if (this.props.edit) {
+			if (this.state.questoes.length === 0) {
+				this.setState({
+					noQuestions: true
+				})
+			}
+
 			this.setState({
 				questoesExcluidas: [this.state.questoesExcluidas, questao]
 			})
@@ -332,14 +323,16 @@ export class QuestionarioFormulario extends Component {
 							disabled={this.state.editQuestion}
 							type="button"
 							onClick={this.handleEditQuestion.bind(this, index, item)}
-							className="button button--green">Editar</button>
+							className="button button--yellow">Editar</button>
 						<button 
 							disabled={this.state.editQuestion}
 							onClick={this.handleDeleteQuestion.bind(this, index, item)}
-							className="button button--green">Deletar</button>
+							className="button button--red">Deletar</button>
+
 					</div>
 				</li>
 			);
+
 
 		return (
 			<form
@@ -427,11 +420,21 @@ export class QuestionarioFormulario extends Component {
 				
 				<div className="buttons">
 					<button
-						disabled={this.state.editQuestion || !this.state.nome || !this.state.descricao || !this.state.prazo || this.state.questoes.length === 0}
+						disabled={
+							this.state.editQuestion || 
+							!this.state.nome || 
+							!this.state.descricao || 
+							!this.state.prazo || 
+							(!this.props.edit && this.state.questoes.length === 0)
+						}
 						onClick={this.handleSubmit} 
 						type="button" 
 						className="button">
-						{this.props.edit ? 'Editar Questionário' : 'Criar Questionário'}
+						{
+							this.props.edit ? (
+									this.state.noQuestions ? 
+									'Deletar Questionário' : 'Editar Questionário'
+								) : 'Criar Questionário'}
 					</button>
 				</div>
 			</form>

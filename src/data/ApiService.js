@@ -660,7 +660,7 @@ export async function editUserQuestions(questionsId, token, data) {
 	}
 }
 
-export async function editQuestionnaire(questionarioId, token, data, questoes) {
+export async function editQuestionnaire(questionarioId, token, data) {
 	const questionarios = await editUserQuestionnaire(questionarioId, token, data)
 	return questionarios
 }

@@ -820,12 +820,12 @@ class CurriculoFormulario extends React.Component {
 							disabled={this.state.editingField}
 							type="button"
 							onClick={this.handleEditCurso.bind(this, index, item)}
-							className="button button--green">Editar</button>
+							className="button button--yellow">Editar</button>
 						<button 
 							disabled={this.state.editingField}
 							type="button"
 							onClick={this.handleDeleteCurso.bind(this, index, item)}
-							className="button button--green">Deletar</button>
+							className="button button--red">Deletar</button>
 					</div>
 				</li>
 			);
@@ -855,12 +855,12 @@ class CurriculoFormulario extends React.Component {
 						disabled={this.state.editingField}
 						type="button"
 						onClick={this.handleEditEducacao.bind(this, index, item)}
-						className="button button--green">Editar</button>
+						className="button button--yellow">Editar</button>
 					<button
 						disabled={this.state.editingField} 
 						type="button"
 						onClick={this.handleDeleteEducacao.bind(this, index, item)}
-						className="button button--green">Deletar</button>
+						className="button button--red">Deletar</button>
 				</div>
 			</li>
 		);
@@ -890,12 +890,12 @@ class CurriculoFormulario extends React.Component {
 						disabled={this.state.editingField}
 						type="button" 
 						onClick={this.handleEditExperiencias.bind(this, index, item)}
-						className="button button--green">Editar</button>
+						className="button button--yellow">Editar</button>
 					<button
 						disabled={this.state.editingField}
 						type="button" 
 						onClick={this.handleDeleteExperiencias.bind(this, index, item)}
-						className="button button--green">Deletar</button>
+						className="button button--red">Deletar</button>
 				</div>
 			</li>
 		);
@@ -917,12 +917,12 @@ class CurriculoFormulario extends React.Component {
 						disabled={this.state.editingField}
 						type="button"
 						onClick={this.handleEditHabilidades.bind(this, index, item)}
-						className="button button--green">Editar</button>
+						className="button button--yellow">Editar</button>
 					<button
 						disabled={this.state.editingField}
 						type="button" 
 						onClick={this.handleDeleteHabilidades.bind(this, index, item)}
-						className="button button--green">Deletar</button>
+						className="button button--red">Deletar</button>
 				</div>
 			</li>
 		);
@@ -944,12 +944,12 @@ class CurriculoFormulario extends React.Component {
 						disabled={this.state.editingField}
 						type="button"
 						onClick={this.handleEditIdiomas.bind(this, index, item)}
-						className="button button--green">Editar</button>
+						className="button button--yellow">Editar</button>
 					<button
 						disabled={this.state.editingField}
 						type="button" 
 						onClick={this.handleDeleteIdiomas.bind(this, index, item)}
-						className="button button--green">Deletar</button>
+						className="button button--red">Deletar</button>
 				</div>
 			</li>
 		);

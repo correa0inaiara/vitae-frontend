@@ -361,7 +361,7 @@ export class VagaFormulario extends Component {
 						<div className="buttons">
 							<button 
 								onClick={this.handleDeleteBeneficio.bind(this, index, item)}
-								className="button button--green">Deletar</button>
+								className="button button--red">Deletar</button>
 						</div>
 					</li>
 				)
@@ -524,8 +524,8 @@ export class VagaFormulario extends Component {
 								<div className="buttons">
 									<Link 
 										className="lista-vazia__button"
-										to='/'>
-										<Button buttonClass='button button--green' buttonText='Ir para a Questionários' />
+										to='/questionarios'>
+										<Button buttonClass='button button--green' buttonText='Ir para Questionários' />
 									</Link>
 								</div>
 							</div>

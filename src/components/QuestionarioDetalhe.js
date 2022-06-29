@@ -14,7 +14,7 @@ const QuestionarioDetalhe = ({ callback, data, index, usuario }) => {
 	const [questionarioPrazo, setQuestionarioPrazo] = useState(questionario.prazo)
 	const [questionarioQuestoes, setQuestionarioQuestoes] = useState(questoes)
 	const [edit, setEdit] = useState(false)
-	const [editData, setEditData] = useState(false)
+	const [editData, setEditData] = useState([])
 
 	const handleDelete = async function (event) {
 		const result = await deleteUserQuestionnaire(questionario.questionarioid, usuario.token)
@@ -48,9 +48,9 @@ const QuestionarioDetalhe = ({ callback, data, index, usuario }) => {
 				<p className="detalhe-item__value">{questionarioPrazo}</p>
 			</div>
 			<div className="detalhe-item">
-				<p className="detalhe-item__subitem-label">Questões: </p>
+				<p className="subtitle subtitle-subitems">Questões: </p>
 				{questoes.map((item, index) => (
-					<div key={index} className="detalhe-item__questoes-values">
+					<div key={index} className="detalhe-item__subitem">
 						<p className="detalhe-item__label">Questão {index + 1}</p>
 						<p className="detalhe-item__value">{item.questao}</p>
 					</div>
@@ -59,18 +59,18 @@ const QuestionarioDetalhe = ({ callback, data, index, usuario }) => {
 			<div className="buttons">
 				<button 
 					onClick={handleEdit}
-					className="button button--green">
+					className="button button--yellow">
 						Editar
 					</button>
 				<button 
 					onClick={handleDelete}
-					className="button button--green">
+					className="button button--red">
 						Delete
 					</button>
 			</div>
 			{
 				edit ? (
-					<QuestionarioFormulario callback={callback} edit={true} data={editData} />
+					<QuestionarioFormulario callback={callback} edit={true} data={editData} deletarQuestionario={handleDelete}/>
 				) : ''
 			}
 		</div>

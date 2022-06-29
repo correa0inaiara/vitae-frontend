@@ -54,6 +54,7 @@
 }
 
 .button--green:hover {
+	border: 2px solid var(--button-secondary-color);
 	color: var(--button-secondary-color);
 }
 
@@ -79,14 +80,36 @@
 }
 
 .button--grey {
-	font-size: 14px;
-	box-shadow: 0px 2px 3px var(--button-terciary-color);
-	background-color: var(--background-terciary-color);
 	border: 2px solid var(--button-terciary-color);
+	background-color: var(--background-terciary-color);
+	box-shadow: 0px 3px 2px 2px var(--button-terciary-color);
 }
 
 .button--grey:hover {
+	border: 2px solid var(--button-terciary-color);
 	color: var(--button-terciary-color);
+}
+
+.button--red {
+	border: 2px solid var(--background-dark-quaternary-color);
+	background-color: var(--background-quaternary-color);
+	box-shadow: 0px 3px 2px 2px var(--background-dark-quaternary-color);
+}
+
+.button--red:hover {
+	border: 2px solid var(--background-dark-quaternary-color);
+	color: var(--background-dark-quaternary-color);
+}
+
+.button--yellow {
+	border: 2px solid var(--button-dark-yellow-color);
+	background-color: var(--button-yellow-color);
+	box-shadow: 0px 3px 2px 2px var(--button-dark-yellow-color);
+}
+
+.button--yellow:hover {
+	border: 2px solid var(--button-dark-yellow-color);
+	color: var(--button-dark-yellow-color);
 }
 
 @media only screen and (min-width: 768px) {

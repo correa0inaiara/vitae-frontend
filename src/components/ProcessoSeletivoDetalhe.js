@@ -75,12 +75,12 @@ const ProcessoSeletivoDetalhe = ({ callback, data, index, usuario }) => {
 			<div className="buttons">
 				<button 
 					onClick={handleEdit}
-					className="button button--green">
+					className="button button--yellow">
 						Editar
 				</button>
 				<button 
 					onClick={handleDelete}
-					className="button button--green">
+					className="button button--red">
 						Delete
 				</button>
 				{

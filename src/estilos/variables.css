@@ -4,6 +4,7 @@
 	--background-secondary-color: #191919;
 	--background-terciary-color: #B6B6B6;
 	--background-quaternary-color: #F04242;
+	--background-dark-quaternary-color: #d13a3a;
 	--background-box-shadow-color: #939393;
 	--button-primary-color: #7AF2A3;
 	--button-secondary-color: #65c486;
@@ -11,6 +12,7 @@
 	--button-purple-color: #B371F4;
 	--button-purple-color-border: #9d64d6;
 	--button-yellow-color: #F8C259;
+	--button-dark-yellow-color: #e8b755;
 	--button-dark-blue-color: #668bd4;
 	--button-blue-color: #7EA4EF;
 }
