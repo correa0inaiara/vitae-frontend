@@ -1,0 +1,24 @@
+.agendamento {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.agendamento .lista {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.agendamento .detalhe {
+	padding: 10px 0;
+}
+
+.detalhe-item {
+	margin-bottom: 5px;
+}
+
+.detalhe-item .detalhe-item__label {
+	font-weight: bold;
+	margin-right: 5px;
+}

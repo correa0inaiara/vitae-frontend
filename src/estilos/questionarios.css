@@ -1,0 +1,60 @@
+.message {
+	text-align: center;
+	line-height: 1.2;
+}
+
+.detalhe {
+	border: 1px solid var(--background-secondary-color);
+    padding: 20px 10px;
+    margin-bottom: 20px;
+}
+
+.detalhe-item__subitem:not(:last-child),
+.detalhe-item:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.detalhe-item {
+	display: flex;
+	flex-direction: column;
+}
+
+a.detalhe-item__link {
+	margin: 50px 0;
+	display: block;
+}
+
+a.detalhe-item__link--etapa {
+	margin: 15px 0;
+	display: block;
+}
+
+.mensagem {
+	margin: 10px;
+	text-align: center;
+}
+
+.detalhe-item__subtitens:not(:last-child) {
+	border-bottom: 1px solid var(--background-terciary-color);
+    margin: 0 0 20px 0;
+}
+
+.detalhe-item__subtitem {
+	margin-bottom: 15px;
+}
+
+.detalhe-item__subitem-label,
+.detalhe-item__label {
+	margin-bottom: 5px;
+}
+
+.detalhe-item__subitem-label {
+	font-weight: bold;
+	margin: 10px 0 15px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid var(--background-terciary-color);
+}
+
+.questionarios .detalhe-item__subitem-values:not(:last-child) {
+	margin-bottom: 10px;
+}

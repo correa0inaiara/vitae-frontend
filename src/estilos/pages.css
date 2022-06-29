@@ -1,0 +1,74 @@
+/* Estilos de cada página e estilos gerais */
+
+html,
+body,
+#root {
+    position: relative;
+    background: var(--background-primary-color);
+}
+
+.app {
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex: 1 0 auto;
+}
+
+/* Home */
+.home {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Destaque */
+.destaque {
+    font-size: 40px;
+    padding: 5px;
+    left: 16px;
+    top: 83px;
+    opacity: 0.8;
+    border-radius: 10px;
+	width: 180px;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.destaque.destaque--vermelho {
+	background-color: var(--background-quaternary-color);
+}
+
+.destaque.destaque--cinza {
+	background-color: var(--background-terciary-color);
+}
+
+/* Media Queries */
+
+@media only screen and (min-width: 768px) {
+    .app {
+        margin: 50px;
+    }
+    
+    /* .home { */
+        /* padding: 50px; */
+        /* box-shadow: 0px 10px 5px 10px var(--background-box-shadow-color); */
+        /* border-radius: 20px; */
+    /* } */
+}
+
+@media only screen and (max-width: 1023px) {
+    .home {
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .home {
+        padding: 100px;
+    }
+}

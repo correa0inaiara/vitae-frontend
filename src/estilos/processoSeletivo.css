@@ -1,0 +1,8 @@
+.candidatura-detalhe {
+	border: 1px solid var(--background-secondary-color);
+    padding: 20px;
+}
+
+.subtitle-subtitem {
+	font-size: 18px;
+}

@@ -1,0 +1,16 @@
+@media only screen and (min-width: 768px) {
+	.lista {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 30px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.lista {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 30px;
+	}
+}
+

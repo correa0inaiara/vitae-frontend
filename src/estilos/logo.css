@@ -1,0 +1,42 @@
+.logo {
+    width: 200px;
+    top: 0;
+    margin: 20px 0;
+    left: 20px;
+	font-family: 'OpenSans', sans-serif;
+	color: var(--secondary-color);
+	position: relative;
+    order: 2;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-title {
+	font-size: 40px;
+}
+
+.logo-img {
+    height: auto;
+}
+
+.logo-subtitle {
+	font-size: 16px;
+	margin: 5px 10px;
+    background-color: var(--background-secondary-color);
+    color: var(--background-primary-color);
+    padding: 5px 10px;
+    text-align: center;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+    .logo {
+        margin: 20px 0;
+    }
+}

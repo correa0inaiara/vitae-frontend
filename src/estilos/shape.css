@@ -1,0 +1,29 @@
+.img {
+	position: absolute;
+	width: 112px;
+	height: auto;
+}
+
+/* Shapes styles by page */
+/* HOME */
+.shape.home .img.blue {
+	bottom: 0;
+	margin: 0 auto;
+}
+
+.shape.home .img.purple {
+	top: -17px;
+    right: -23px;
+    transform: rotate(286deg);
+}
+
+.shape.home .img.yellow {
+	top: auto;
+	bottom: auto;
+	left: 0;
+}
+
+.img-tag {
+	width: 100%;
+	height: 100%;
+}

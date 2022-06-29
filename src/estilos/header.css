@@ -1,0 +1,33 @@
+.header {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-around;
+	align-items: center;
+    background: var(--background-primary-color);
+	/* margin-bottom: 50px; */
+}
+
+.on-scroll {
+	top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+	z-index: 3;
+    background: var(--background-primary-color);
+    box-shadow: 1px 1px 2px var(--background-terciary-color);
+}
+
+.header ~ div {
+	margin-top: 50px;
+}
+
+.header.on-scroll ~ div {
+	margin-top: 150px;
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+	.header {
+		justify-content: space-between;
+	}
+}

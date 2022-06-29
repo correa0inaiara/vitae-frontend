@@ -1,0 +1,21 @@
+:root {
+	/* Cores */
+	--background-primary-color: #FBFBFB;
+	--background-secondary-color: #191919;
+	--background-terciary-color: #B6B6B6;
+	--background-quaternary-color: #F04242;
+	--background-box-shadow-color: #939393;
+	--button-primary-color: #7AF2A3;
+	--button-secondary-color: #65c486;
+	--button-terciary-color: #898989;;
+	--button-purple-color: #B371F4;
+	--button-purple-color-border: #9d64d6;
+	--button-yellow-color: #F8C259;
+	--button-blue-color: #7EA4EF;
+}
+
+/* Fontes */
+@font-face {
+    font-family: 'OpenSans', sans-serif;
+    src: url('../assets/opensans.ttf');
+}

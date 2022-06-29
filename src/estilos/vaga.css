@@ -1,0 +1,56 @@
+.detalhes-vaga__title,
+.detalhes-empresa__title {
+	font-size: 18px;
+    color: var(--background-box-shadow-color);
+    margin: 10px 0;
+    border-bottom: 1px solid var(--background-box-shadow-color);
+    padding-bottom: 10px;
+}
+
+.detalhes-empresa {
+    margin-bottom: 40px;
+}
+
+.detalhes-candidatura__realizada {}
+
+.detalhes-candidatura__nao-realizada {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px 0 50px;
+}
+
+.candidatura-nao-realizada__mensagem {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.detalhe-item__value {
+    word-break: break-all;
+}
+
+.detalhes-candidatura__mensagens {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 40px;
+}
+
+.detalhes-candidatura__mensagem-paragraph {
+    margin: 5px 0;
+    font-weight: bold;
+    color: var(--button-secondary-color);
+}
+
+.detalhes-candidatura {
+    border: 1px solid var(--background-secondary-color);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.detalhes-agendamento {
+    border: 1px solid var(--background-secondary-color);
+    padding: 20px;
+    margin: 20px 0;
+}
