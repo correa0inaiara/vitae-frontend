@@ -93,6 +93,17 @@
 	.buttons {
 		margin: 25px auto 0;
 		flex-direction: row;
-		flex-wrap: wrap;
+	}
+
+	.button:not(:last-child) {
+		margin-right: 15px;
+	}
+
+	.lista .buttons {
+		flex-direction: column;
+	}
+
+	.lista .button:not(:last-child) {
+		margin-right: 0;
 	}
 }

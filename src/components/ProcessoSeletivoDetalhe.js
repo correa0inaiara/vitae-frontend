@@ -46,7 +46,6 @@ const ProcessoSeletivoDetalhe = ({ callback, data, index, usuario }) => {
 	useEffect(() => {
 		async function getCandidaturas() {
 			const candidaturas = await getAllApplicationsByVacancy(vagaSelecionada, usuario.token)
-            console.log("🚀 ~ file: ProcessoSeletivoDetalhe.js ~ line 48 ~ getCandidaturas ~ candidaturas", candidaturas)
 			if (candidaturas && candidaturas.length > 0) {
 				setTemCandidaturas(true)
 			} else {

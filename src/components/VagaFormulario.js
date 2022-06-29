@@ -120,7 +120,6 @@ export class VagaFormulario extends Component {
 				}
 				
 				
-				console.log("🚀 ~ file: VagaFormulario.js ~ line 117 ~ VagaFormulario ~ this.setState ~ questionariosArr", questionariosArr)
 				this.setState((state) => {
 					return { 
 						user: userJson,
@@ -325,7 +324,6 @@ export class VagaFormulario extends Component {
 			this.handleEditSubmit(vagaId, token, data, beneficiosOferecidos)
 		} else {
 			let result = registerVacancy(questionarioId, tipoContratacaoId, usuarioId, token, data, beneficiosOferecidos)
-            console.log("🚀 ~ file: VagaFormulario.js ~ line 328 ~ VagaFormulario ~ handleSubmit ~ result", result)
 			if (result) {
 				this.setState({created: true})
 				this.props.callback()

@@ -159,7 +159,7 @@ class CurriculoFormulario extends React.Component {
 
 	handleEditEducacao(index, item) {
 		this.setState({
-			editingIndex: index,
+			editingEducacaoIndex: index,
 			editingField: true,
 			educacao: item.educacao,
 			localizacaoEducacao: item.localizacao,
@@ -184,7 +184,7 @@ class CurriculoFormulario extends React.Component {
 
 	handleEditCurso(index, item) {
 		this.setState({
-			editingIndex: index,
+			editingCursosIndex: index,
 			editingField: true,
 			curso: item.curso,
 			localizacaoCurso: item.localizacao,
@@ -208,7 +208,7 @@ class CurriculoFormulario extends React.Component {
 
 	handleEditExperiencias(index, item) {
 		this.setState({
-			editingIndex: index,
+			editingExperienciasIndex: index,
 			editingField: true,
 			cargo: item.cargo,
 			empresa: item.empresa,
@@ -234,10 +234,10 @@ class CurriculoFormulario extends React.Component {
 
 	handleEditHabilidades(index, item) {
 		this.setState({
-			editingIndex: index,
+			editingHabilidadesIndex: index,
 			editingField: true,
 			habilidade: item.habilidade,
-			nivelHabilidade: item.nivelhabilidade
+			nivelHabilidade: item.nivel
 		})
 	}
 
@@ -342,13 +342,13 @@ class CurriculoFormulario extends React.Component {
 			}
 			const experiencias = {
 				experiencias: this.state.experiencias,
-				experienciasAdicionados: this.state.experienciasAdicionadas,
-				experienciasExcluidos: this.state.experienciasExcluidas
+				experienciasAdicionadas: this.state.experienciasAdicionadas,
+				experienciasExcluidas: this.state.experienciasExcluidas
 			}
 			const habilidades = {
 				habilidades: this.state.habilidades,
-				habilidadesAdicionados: this.state.habilidadesAdicionadas,
-				habilidadesExcluidos: this.state.habilidadesExcluidas
+				habilidadesAdicionadas: this.state.habilidadesAdicionadas,
+				habilidadesExcluidas: this.state.habilidadesExcluidas
 			}
 			const educacao = {
 				educacao: this.state.educacaoArr,
@@ -359,6 +359,11 @@ class CurriculoFormulario extends React.Component {
 				idiomas: this.state.idiomas,
 				idiomasAdicionados: this.state.idiomasAdicionados,
 				idiomasExcluidos: this.state.idiomasExcluidos
+			}
+
+			let data = {
+				nome: this.state.nome,
+				descricao: this.state.descricao,
 			}
 
 			data.cursos = cursos
@@ -431,11 +436,6 @@ class CurriculoFormulario extends React.Component {
 		let value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
 
-		if (name === 'nome') {
-			const pattern = /^[a-zA-Z\u00C0-\u00FF &']+$/
-			this.validacaoRegex(pattern, value, name)
-		}
-
 		if (name === 'curso') {
 			const pattern = /^[a-zA-Z\u00C0-\u00FF 0-9!#-_&']+$/
 			this.validacaoRegex(pattern, value, name)
@@ -501,7 +501,7 @@ class CurriculoFormulario extends React.Component {
 				cursosObj[index].duracaoemhoras = this.state.duracaoEmHoras
 				this.setState({
 					editingField: false,
-					editingIdiomasIndex: 0,
+					editingCursosIndex: 0,
 					curso: '',
 					localizacaoCurso: '',
 					duracaoEmHoras: '',
@@ -518,7 +518,7 @@ class CurriculoFormulario extends React.Component {
 					localizacaoCurso: '',
 					duracaoEmHoras: '',
 					cursos: [...this.state.cursos, newCurso],
-					cursosAdicionadas: [...this.state.cursosAdicionados, newCurso]
+					cursosAdicionados: [...this.state.cursosAdicionados, newCurso]
 				})
 			}
 		} else {
@@ -529,8 +529,8 @@ class CurriculoFormulario extends React.Component {
 				cursosObj[index].localizacao = this.state.localizacaoCurso
 				cursosObj[index].duracaoemhoras = this.state.duracaoEmHoras
 				this.setState({
-					editingIdiomasIndex: false,
-					editingIdiomasIndex: 0,
+					editingField: false,
+					editingCursosIndex: 0,
 					curso: '',
 					localizacaoCurso: '',
 					duracaoEmHoras: '',
@@ -596,7 +596,7 @@ class CurriculoFormulario extends React.Component {
 				educacaoObj[index].periodofinal = this.state.periodoFinalEducacao
 				this.setState({
 					editingField: false,
-					editingExperienciasIndex: 0,
+					editingEducacaoIndex: 0,
 					educacao: '',
 					localizacaoEducacao: '',
 					periodoInicialEducacao: '',
@@ -775,7 +775,7 @@ class CurriculoFormulario extends React.Component {
 			if (this.state.editingField) {
 				const habilidadesObj = this.state.habilidades
 				const index = this.state.editingHabilidadesIndex
-				habilidadesObj[index].habilidade = this.state.habilidades
+				habilidadesObj[index].habilidade = this.state.habilidade
 				habilidadesObj[index].nivel = this.state.nivelHabilidade
 				this.setState({
 					editingField: false,

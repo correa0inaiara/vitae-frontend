@@ -60,16 +60,13 @@ const Relatorios = () => {
 
 	const setGrafico2 = function (relatorioData) {
 		const idiomas = relatorioData
-        // console.log("🚀 ~ file: Relatorios.js ~ line 63 ~ setGrafico2 ~ idiomas", idiomas)
 		let idiomasArr = []
 		let basico = []
 		let intermediario = []
 		let avancado = []
 
 		idiomas.filter((item, index) => idiomasArr.push(item.idioma))
-        // console.log("🚀 ~ file: Relatorios.js ~ line 70 ~ setGrafico2 ~ idiomasArr", idiomasArr)
 		const labels = idiomasArr.filter((item, pos) => idiomasArr.indexOf(item) === pos)
-        // console.log("🚀 ~ file: Relatorios.js ~ line 72 ~ setGrafico2 ~ labels", labels)
 
 		for (var i = 0; i<idiomas.length; i++) {
 			for (var j = 0; j<labels.length; j++) {
@@ -86,9 +83,6 @@ const Relatorios = () => {
 				}
 			}
 		}
-		// console.log("🚀 ~ file: Relatorios.js ~ line 77 ~ setGrafico2 ~ basico", basico)
-		// console.log("🚀 ~ file: Relatorios.js ~ line 77 ~ setGrafico2 ~ intermediario", intermediario)
-		// console.log("🚀 ~ file: Relatorios.js ~ line 77 ~ setGrafico2 ~ avancado", avancado)
 
 		const data = {
 			labels,

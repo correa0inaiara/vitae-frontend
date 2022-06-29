@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
 
 	// call this function when you want to authenticate the user
 	const login = async (data) => {
-    	console.log("🚀 ~ file: useAuth.js ~ line 12 ~ login ~ data", data)
 		setUser(data);
 		navigate("/dashboard/dashboard");
 	};

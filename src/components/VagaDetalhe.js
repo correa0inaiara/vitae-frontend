@@ -79,7 +79,6 @@ const VagaDetalhe = ({
 
 	const handleCandidatura = function () {
 		const candidatura = createApplication(usuario.usuarioId, vagaData.vagaid, curriculoSelecionado, usuario.token)
-        console.log("🚀 ~ file: VagaDetalhe.js ~ line 81 ~ handleCandidatura ~ candidatura", candidatura)
 		setCurriculoSelecionado('')
 		callback()
 	}

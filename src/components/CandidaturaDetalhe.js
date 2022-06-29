@@ -29,7 +29,6 @@ const CandidaturaDetalhe = () => {
 				setUsuario(user)
 
 				const candidatura = await getApplicationById(params.candidaturaId, user.token)
-                console.log("🚀 ~ file: CandidaturaDetalhe.js ~ line 32 ~ getUser ~ candidatura", candidatura)
 
 				if (candidatura) {
 					

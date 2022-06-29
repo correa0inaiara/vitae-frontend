@@ -37,7 +37,6 @@ const ProcessoSeletivoEtapa1 = () => {
 
 			const resultSelectedCandidates = await getSelectedCandidates(resultProcessoSeletivo.processoseletivoid, user.token)
 			localStorage.setItem('candidatosSelecionados', JSON.stringify(resultSelectedCandidates))
-            console.log("🚀 ~ file: ProcessoSeletivoEtapa1.js ~ line 37 ~ getList ~ resultSelectedCandidates", resultSelectedCandidates)
 			setCandidatosSelecionados(resultSelectedCandidates)
 
 		}

@@ -4,7 +4,6 @@ import { createSchedule, editSchedule, getSelectedCandidates } from '../data/Api
 export class AgendamentoFormulario extends Component {
 	constructor(props) {
 		super(props)
-        console.log("🚀 ~ file: AgendamentoFormulario.js ~ line 7 ~ AgendamentoFormulario ~ constructor ~ props", props)
 
 		const temProps = props && Object.keys(props).length > 0 ? true : false
 
@@ -82,7 +81,6 @@ export class AgendamentoFormulario extends Component {
 					candidatosSelecionados = JSON.parse(_candidatosSeleciondos)
 				} else {
 					candidatosSelecionados = await getSelectedCandidates(this.props.data.processoseletivoid, userJson.token)
-					console.log("🚀 ~ file: ProcessoSeletivoEtapa1.js ~ line 37 ~ getList ~ candidatosSelecionados", candidatosSelecionados)
 				}
 			
 				this.setState((state) => {

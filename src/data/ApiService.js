@@ -43,7 +43,7 @@ export async function getScheduleBySelectionProcess(processoSeletivoId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -59,7 +59,7 @@ export async function getScheduleByUser(usuarioId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -77,7 +77,7 @@ export async function createSchedule(processoSeletivoId, candidatoSelecionadoId,
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -95,7 +95,7 @@ export async function editSchedule(agendamentoId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -112,7 +112,7 @@ export async function deleteSchedule(agendamentoId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -139,7 +139,7 @@ export async function deleteUserSelectionProcess(processoSeletivoId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -157,7 +157,7 @@ export async function editUserSelectionProcess(processoSeletivoId, token, data) 
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -182,7 +182,7 @@ export async function createUserSelectionProcess(empresaId, vagaId, token, data)
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -205,7 +205,7 @@ export async function getUserSelectionProcesses(empresaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -221,7 +221,7 @@ export async function getSelectedCandidates(processoSeletivoId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -246,7 +246,7 @@ export async function getAllApplicationsByVacancy(vagaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -262,7 +262,7 @@ export async function getCandidate(usuarioId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -278,7 +278,7 @@ export async function getApplicationById(candidaturaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -294,7 +294,7 @@ export async function getUserApplications(candidaturaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -320,7 +320,7 @@ export async function createUserApplication(candidatoId, vagaId, curriculoId, to
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -338,7 +338,7 @@ export async function registerSelectedCandidate(candidaturaId, processoSeletivoI
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -380,7 +380,7 @@ export async function createUserVacancy(questionarioId, empresaId, tipoContratac
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -396,7 +396,7 @@ export async function getTypesOfHiringAndBenefits(token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -424,7 +424,7 @@ export async function createUserOfferedBenefits(vagaId, beneficioId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -441,7 +441,7 @@ export async function getUserVacancies(empresaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -458,7 +458,7 @@ export async function getUserOfferedBenefits(vagaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -486,7 +486,7 @@ export async function editUserOfferedBenefits(vagaId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -504,7 +504,7 @@ export async function editUserVacancy(vagaId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -526,7 +526,7 @@ export async function deleteUserVacancy(vagaId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -543,7 +543,7 @@ export async function getAllVacancies(token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -572,7 +572,7 @@ export async function getCompany(usuarioId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -588,7 +588,7 @@ export async function getUserQuestionnaires(usuarioId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -619,7 +619,7 @@ export async function createQuestionnaire(data, empresaId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -637,7 +637,7 @@ export async function createQuestion(data, questionarioId, token) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -655,7 +655,7 @@ export async function editUserQuestions(questionsId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -678,7 +678,7 @@ export async function editUserQuestionnaire(questionarioId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -695,7 +695,7 @@ export async function deleteUserQuestionnaire(questionarioId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -714,7 +714,7 @@ export async function getRelatorios(token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-		console.log('Erro ao recuperar a listagem de usuários: ', error)
+		console.log('Erro ao realizar requisição: ', error)
 		return error
 	}
 }
@@ -731,7 +731,7 @@ export async function createUser(usuario) {
 		const json = await response.json();
 		return json[0].usuarioid;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -746,7 +746,7 @@ export async function createCompany(usuarioId, empresa) {
 		const json = await response.json();
 		return json[0].empresaid;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -761,7 +761,7 @@ export async function createCandidate(usuarioId, candidato) {
 		const json = await response.json();
 		return json[0].candidatoid;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -776,7 +776,7 @@ export async function createContact(usuarioId, contatos) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -791,7 +791,7 @@ export async function createAddress(usuarioId, endereco) {
 		const json = await response.json();
 		return json[0].enderecoid;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -806,7 +806,7 @@ export async function createSocialNetwork(usuarioId, redesSociais) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -896,7 +896,7 @@ export async function getCurriculums(usuarioId, token) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -914,7 +914,7 @@ export async function editarCurriculum(curriculoId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -932,7 +932,7 @@ export async function createCurriculum(usuarioId, token, data) {
 		const json = await response.json();
 		return json
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -950,7 +950,7 @@ export async function createEducation(usuarioId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -968,7 +968,7 @@ export async function createCourses(usuarioId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -986,7 +986,7 @@ export async function createLanguages(usuarioId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -1004,7 +1004,7 @@ export async function createExperience(usuarioId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -1022,7 +1022,7 @@ export async function createSkills(usuarioId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -1044,7 +1044,7 @@ export async function deleteUserCurriculum(curriculoId, token) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }
@@ -1062,7 +1062,7 @@ export async function editUserCurriculum(curriculoId, token, data) {
 		const json = await response.json();
 		return json;
 	} catch (error) {
-        console.log("🚀 ~ file: ApiService.js ~ line 26 ~ createUser ~ error", error)
+        console.log("Erro ao realizar requisição: ", error)
 		return error
 	}
 }

@@ -5,7 +5,6 @@ import Button from './Button';
 export class QuestionarioFormulario extends Component {
 	constructor(props) {
 		super(props)
-        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 8 ~ QuestionarioFormulario ~ constructor ~ props", props)
 
 		const temProps = props && Object.keys(props).length > 0 ? true : false
 
@@ -240,13 +239,11 @@ export class QuestionarioFormulario extends Component {
 	}
 
 	async handleEditSubmit(questionarioId, token, data, questoes) {
-        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 243 ~ QuestionarioFormulario ~ handleEditSubmit ~ questoes", questoes)
 		const update = {
 			questionario: data,
 			questoes
 		}
 		const result = await editQuestionnaire(questionarioId, token, update)
-        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 249 ~ QuestionarioFormulario ~ handleEditSubmit ~ result", result)
 
 		if (result) {
 			this.clearForm();
@@ -256,7 +253,6 @@ export class QuestionarioFormulario extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-		console.log(this.state)
 
 		const data = {
 			nome: this.state.nome,
@@ -288,7 +284,6 @@ export class QuestionarioFormulario extends Component {
 
 		this.clearForm()
 		
-        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 270 ~ QuestionarioFormulario ~ handleSubmit ~ this.props.", this.props)
 	}
 
 	handleEditQuestion(index, questao) {
@@ -307,7 +302,6 @@ export class QuestionarioFormulario extends Component {
 		this.setState({
 			editQuestionsArr: [...this.state.editQuestionsArr, newQuestionsObj]
 		})
-        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 298 ~ QuestionarioFormulario ~ handleEditQuestion ~ this.state.editQuestionsArr", this.state.editQuestionsArr)
 	}
 
 	handleDeleteQuestion(index, questao) {

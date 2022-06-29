@@ -4,7 +4,6 @@ import { deleteUserCurriculum } from '../data/ApiService'
 import CurriculoFormulario from './CurriculoFormulario'
 
 const CurriculoDetalhe = ({callback, data, usuario}) => {
-console.log("🚀 ~ file: CurriculoDetalhe.js ~ line 7 ~ CurriculoDetalhe ~ data", data)
 	const [edit, setEdit] = useState(false)
 	const [editado, setEditado] = useState(false)
 	const [editData, setEditData] = useState(false)

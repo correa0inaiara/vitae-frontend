@@ -156,10 +156,18 @@ textarea {
 		width: 70%;
     	margin: 50px auto;
 	}
+	
+	.lista .form {
+		width: 100%;
+	}
 }
 
 @media only screen and (min-width: 1440px) {
 	.form {
 		width: 50%;
+	}
+	
+	.lista .form {
+		width: 100%;
 	}
 }

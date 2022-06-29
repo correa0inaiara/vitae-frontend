@@ -11,8 +11,6 @@
     margin-bottom: 40px;
 }
 
-.detalhes-candidatura__realizada {}
-
 .detalhes-candidatura__nao-realizada {
     display: flex;
     flex-direction: column;

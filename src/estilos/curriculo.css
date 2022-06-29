@@ -27,17 +27,6 @@
 	margin-bottom: 25px;
 }
 
-.curriculos .subtitle {
-	padding: 10px 0;
-	font-size: 18px;
-	line-height: 1.5;
-	color: var(--background-secondary-color)
-}
-
-.curriculos .buttons {
-	margin: 0;
-}
-
 .listagem-item {
 	display: flex;
 	flex-direction: column;
@@ -51,5 +40,5 @@
 
 .listagem-item__subitem-label {
 	font-weight: bold;
-	margin-right: 5px;
+	margin: 0 5px 10px 0;
 }

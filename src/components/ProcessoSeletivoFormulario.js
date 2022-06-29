@@ -191,7 +191,6 @@ export class ProcessoSeletivoFormulario extends Component {
 			this.handleEditSubmit(usuarioId, token, data)
 		} else {
 			const result = registerSelectionProcess(usuarioId, vagaId, token, data)
-            console.log("🚀 ~ file: ProcessoSeletivoFormulario.js ~ line 204 ~ ProcessoSeletivoFormulario ~ handleSubmit ~ result", result)
 			if (result) {
 				this.setState({created: true})
 				this.props.callback()

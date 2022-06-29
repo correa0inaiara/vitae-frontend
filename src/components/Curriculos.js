@@ -37,7 +37,7 @@ const Curriculos = () => {
 			resultCurriculos = JSON.parse(_curriculos)
 		} else {
 			resultCurriculos = await getCurriculums(user.usuarioId, user.token)
-			localStorage.setItem('vagas', JSON.stringify(resultCurriculos))
+			localStorage.setItem('curriculos', JSON.stringify(resultCurriculos))
 		}
 
 		if (resultCurriculos && Object.keys(resultCurriculos).length > 0) {

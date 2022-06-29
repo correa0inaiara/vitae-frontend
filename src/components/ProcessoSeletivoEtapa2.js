@@ -35,7 +35,6 @@ const ProcessoSeletivoEtapa2 = () => {
 			setProcessoSeletivoData(resultProcessoSeletivo)
 
 			resultAgendamentos = await getScheduleBySelectionProcess(resultProcessoSeletivo.processoseletivoid, user.token)
-            console.log("🚀 ~ file: ProcessoSeletivoEtapa2.js ~ line 19 ~ getList ~ resultAgendamentos", resultAgendamentos)
 		}
 
 		setUsuario({
@@ -84,7 +83,6 @@ const ProcessoSeletivoEtapa2 = () => {
 	}
 
 	const handleEdit = function (agendamento) {
-    console.log("🚀 ~ file: ProcessoSeletivoEtapa2.js ~ line 85 ~ handleEdit ~ agendamento", agendamento)
 		setEdit(true)
 		const data = {
 			motivo: agendamento.motivo,

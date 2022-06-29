@@ -15,7 +15,6 @@ const Questionarios = () => {
 	const [loading, setLoading] = useState(false);
 
 	const updateList = async function () {
-		console.log('update list')
 		await getList(savedUser)
 	}
 
