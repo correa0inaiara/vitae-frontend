@@ -1040,17 +1040,19 @@ class CurriculoFormulario extends React.Component {
 							{this.state.validations.duracaoEmHoras.invalido ? <span className="error-message">Campo inválido</span> : '' }
 						</div>
 					</label>
-					<button
-						disabled={
-							!this.state.curso || 
-							!this.state.localizacaoCurso || 
-							!this.state.duracaoEmHoras
-						}
-						onClick={this.handleAddOrEditCursos} 
-						type="button" 
-						className="button">
-						{this.state.editingField ? 'Editar Curso' : 'Adicionar Curso'}
-					</button>
+					<div className="buttons">
+						<button
+							disabled={
+								!this.state.curso || 
+								!this.state.localizacaoCurso || 
+								!this.state.duracaoEmHoras
+							}
+							onClick={this.handleAddOrEditCursos} 
+							type="button" 
+							className="button">
+							{this.state.editingField ? 'Editar Curso' : 'Adicionar Curso'}
+						</button>
+					</div>
 				</div>
 				<div className="section section-3">
 					<h2 className="subtitle">Educação</h2>
@@ -1116,13 +1118,15 @@ class CurriculoFormulario extends React.Component {
 							{this.state.validations.periodoFinalEducacao.invalido ? <span className="error-message">Campo inválido</span> : '' }
 						</div>
 					</label>
-					<button
-						disabled={!this.state.educacao || !this.state.periodoInicialEducacao || !this.state.periodoFinalEducacao || !this.state.localizacaoEducacao}
-						onClick={this.handleAddOrEditEducacao} 
-						type="button" 
-						className="button">
-						{this.state.editingField ? 'Editar Educação' : 'Adicionar Educação'}
-					</button>
+					<div className="buttons">
+						<button
+							disabled={!this.state.educacao || !this.state.periodoInicialEducacao || !this.state.periodoFinalEducacao || !this.state.localizacaoEducacao}
+							onClick={this.handleAddOrEditEducacao} 
+							type="button" 
+							className="button">
+							{this.state.editingField ? 'Editar Educação' : 'Adicionar Educação'}
+						</button>
+					</div>
 				</div>
 				<div className="section section-4">
 					<h2 className="subtitle">Experiências</h2>
@@ -1188,13 +1192,15 @@ class CurriculoFormulario extends React.Component {
 							{this.state.validations.empresa.naoConfere ? <span className="error-message">Senhas não conferem</span> : '' }
 						</div>
 					</label>
-					<button
-						disabled={!this.state.cargo || !this.state.periodoInicialExperiencia || !this.state.periodoFinalExperiencia || !this.state.empresa}
-						onClick={this.handleAddOrEditExperiencias} 
-						type="button" 
-						className="button">
-						{this.state.editingField ? 'Editar Experiência' : 'Adicionar Experiência'}
-					</button>
+					<div className="buttons">
+						<button
+							disabled={!this.state.cargo || !this.state.periodoInicialExperiencia || !this.state.periodoFinalExperiencia || !this.state.empresa}
+							onClick={this.handleAddOrEditExperiencias} 
+							type="button" 
+							className="button">
+							{this.state.editingField ? 'Editar Experiência' : 'Adicionar Experiência'}
+						</button>
+					</div>
 				</div>
 				<div className="section section-5">
 					<h2 className="subtitle">Habilidades</h2>
@@ -1236,13 +1242,15 @@ class CurriculoFormulario extends React.Component {
 							{this.state.validations.nivelHabilidade.obrigatorio ? <span className="error-message">Campo obrigatório</span> : '' }
 						</div>
 					</div>
-					<button
-						disabled={!this.state.habilidade || !this.state.nivelHabilidade}
-						onClick={this.handleAddOrEditHabilidades} 
-						type="button" 
-						className="button">
-						{this.state.editingField ? 'Editar Habilidade' : 'Adicionar Habilidade'}
-					</button>
+					<div className="buttons">
+						<button
+							disabled={!this.state.habilidade || !this.state.nivelHabilidade}
+							onClick={this.handleAddOrEditHabilidades} 
+							type="button" 
+							className="button">
+							{this.state.editingField ? 'Editar Habilidade' : 'Adicionar Habilidade'}
+						</button>
+					</div>
 				</div>
 				<div className="section section-6">
 					<h2 className="subtitle">Idiomas</h2>
@@ -1284,20 +1292,24 @@ class CurriculoFormulario extends React.Component {
 							{this.state.validations.nivelIdioma.obrigatorio ? <span className="error-message">Campo obrigatório</span> : '' }
 						</div>
 					</div>
+					<div className="buttons">
+						<button
+							disabled={!this.state.idioma || !this.state.nivelIdioma}
+							onClick={this.handleAddOrEditIdiomas} 
+							type="button" 
+							className="button">
+							{this.state.editingField ? 'Editar Idioma' : 'Adicionar Idioma'}
+						</button>
+					</div>
+				</div>
+				<div className="buttons">
 					<button
-						disabled={!this.state.idioma || !this.state.nivelIdioma}
-						onClick={this.handleAddOrEditIdiomas} 
-						type="button" 
+						disabled={!this.state.nome || !this.state.descricao} 
+						type="submit" 
 						className="button">
-						{this.state.editingField ? 'Editar Idioma' : 'Adicionar Idioma'}
+						{this.props.edit ? 'Editar Currículo' : 'Criar Currículo'}
 					</button>
 				</div>
-				<button
-					disabled={!this.state.nome || !this.state.descricao} 
-					type="submit" 
-					className="button">
-					{this.props.edit ? 'Editar Currículo' : 'Criar Currículo'}
-				</button>
 			</form>
 		)
 	}

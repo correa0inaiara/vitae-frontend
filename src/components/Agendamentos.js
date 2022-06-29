@@ -86,9 +86,6 @@ const Agendamentos = () => {
 						) : <p className="message">{message}</p> 
 					)
 				}
-				<AgendamentoFormulario 
-					edit={false} 
-					callback={(e) => updateList(e)} />
 			</div>
 		</div>
 	)

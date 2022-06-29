@@ -523,11 +523,13 @@ export class VagaFormulario extends Component {
 						) : (
 							<div className="lista-vazia">
 								<p className="mensagem">Você não possui questionários criados. Eles não são obrigatórios, mas se quiser adicionar um à essa vaga, precisa criá-lo na página de questionários antes.</p>
-								{<Link 
-									className="lista-vazia__button"
-									to='/'>
-									<Button buttonClass='button button--green' buttonText='Ir para a Questionários' />
-								</Link>}
+								<div className="buttons">
+									<Link 
+										className="lista-vazia__button"
+										to='/'>
+										<Button buttonClass='button button--green' buttonText='Ir para a Questionários' />
+									</Link>
+								</div>
 							</div>
 						)
 					}
@@ -560,23 +562,28 @@ export class VagaFormulario extends Component {
 									{this.state.validations.beneficioSelecionado.obrigatorio ? <span className="error-message">Campo obrigatório</span> : '' }
 								</div>
 							</div>
-							<button
-								disabled={!this.state.beneficioSelecionado}
-								onClick={this.handleAddOrEditBeneficio} 
-								type="button" 
-								className="button">
-								Adicionar Benefício
-							</button>
+							<div className="buttons">
+								<button
+									disabled={!this.state.beneficioSelecionado}
+									onClick={this.handleAddOrEditBeneficio} 
+									type="button" 
+									className="button">
+									Adicionar Benefício
+								</button>
+							</div>
 						</div>
 					) : ''
 				}
-				<button
-					disabled={!this.state.nome || !this.state.descricao || !this.state.prazo || !this.state.localizacao || !this.state.salario || this.state.beneficiosOferecidos.length === 0}
-					onClick={this.handleSubmit} 
-					type="button" 
-					className="button">
-					{this.props.edit ? 'Editar Vaga' : 'Criar Vaga'}
-				</button>
+
+				<div className="buttons">
+					<button
+						disabled={!this.state.nome || !this.state.descricao || !this.state.prazo || !this.state.localizacao || !this.state.salario || this.state.beneficiosOferecidos.length === 0}
+						onClick={this.handleSubmit} 
+						type="button" 
+						className="button">
+						{this.props.edit ? 'Editar Vaga' : 'Criar Vaga'}
+					</button>
+				</div>
 			</form>
 		)
 	}

@@ -85,13 +85,15 @@ const ProcessoSeletivoEtapa1 = () => {
 
 	return (
 		<div className="etapa1">
-			<Link 
-				className='detalhe-item__link'
-				to='/processos-seletivos'>
-				<button
-					className="button button--grey"
-					>Voltar para Processos Seletivos</button>
-			</Link>
+			<div className="buttons">
+				<Link 
+					className='detalhe-item__link'
+					to='/processos-seletivos'>
+					<button
+						className="button button--grey"
+						>Voltar para Processos Seletivos</button>
+				</Link>
+			</div>
 			<h1 className="title">Processo Seletivo</h1>
 			<h2 className="subtitle subtitle-etapa">ETAPA 1: Seleção de Candidatos</h2>
 
@@ -118,13 +120,15 @@ const ProcessoSeletivoEtapa1 = () => {
 										}
 									</div>
 									<Candidaturas callback={updateList} candidaturasData={candidaturas} usuario={usuario} processoSeletivoData={processoSeletivoData} />
-									<Link 
-										className='detalhe-item__link'
-										to='/processos-seletivos/etapa-2'>
-										<button
-											className="button button--purple"
-											>Próxima Etapa</button>
-									</Link>
+									<div className="buttons">
+										<Link 
+											className='detalhe-item__link'
+											to='/processos-seletivos/etapa-2'>
+											<button
+												className="button button--purple"
+												>Próxima Etapa</button>
+										</Link>
+									</div>
 								</>
 						) : <p className="mensagem">{message}</p>
 					)

@@ -1,15 +1,3 @@
-.agendamento {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.agendamento .lista {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
 .agendamento .detalhe {
 	padding: 10px 0;
 }

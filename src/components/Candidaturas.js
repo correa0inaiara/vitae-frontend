@@ -19,13 +19,15 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 	
 	return (
 		<div className="candidaturas">
-			<Link 
-				className='detalhe-item__link'
-				to='/processos-seletivos'>
-				<button
-					className="button button--grey"
-					>Voltar para os Processos Seletivos</button>
-			</Link>
+			<div className="buttons">
+				<Link 
+					className='detalhe-item__link'
+					to='/processos-seletivos'>
+					<button
+						className="button button--grey"
+						>Voltar para os Processos Seletivos</button>
+				</Link>
+			</div>
 			<h1 className="title">Candidaturas</h1>
 			<div className="lista">
 			{
@@ -34,17 +36,19 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 						<div key={index} className="detalhes-candidatura">
 							<p className="detalhe-item__label">Nome do Candidato:</p>
 							<p className="detalhe-item__value">{item.candidato.nomecompleto}</p>
-							<button
-								onClick={handleSelectCandidate.bind(this, item.candidaturaid)}
-								className="button button--green"
-								>Selecionar Candidato</button>
-							<Link
-								className='detalhe-item__link detalhe-item__link--etapa'
-							 	to={`/candidaturas/${item.candidaturaid}`}>
+							<div className="buttons">
 								<button
+									onClick={handleSelectCandidate.bind(this, item.candidaturaid)}
 									className="button button--green"
-									>Ver Detalhes do Candidato</button>
-							</Link>
+									>Selecionar Candidato</button>
+								<Link
+									className='detalhe-item__link detalhe-item__link--etapa'
+									to={`/candidaturas/${item.candidaturaid}`}>
+									<button
+										className="button button--green"
+										>Ver Detalhes do Candidato</button>
+								</Link>
+							</div>
 						</div>
 					)
 				) : <p className="message">{message}</p>

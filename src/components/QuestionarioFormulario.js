@@ -420,21 +420,26 @@ export class QuestionarioFormulario extends Component {
 							{this.state.validations.questao.invalido ? <span className="error-message">Campo inválido</span> : '' }
 						</div>
 					</label>
+					<div className="buttons">
+						<button
+							disabled={!this.state.questao}
+							onClick={this.handleAddOrEditQuestao} 
+							type="button" 
+							className="button">
+							{this.state.editQuestion ? 'Editar Questão' : 'Adicionar Questão'}
+						</button>
+					</div>
+				</div>
+				
+				<div className="buttons">
 					<button
-						disabled={!this.state.questao}
-						onClick={this.handleAddOrEditQuestao} 
+						disabled={this.state.editQuestion || !this.state.nome || !this.state.descricao || !this.state.prazo || this.state.questoes.length === 0}
+						onClick={this.handleSubmit} 
 						type="button" 
 						className="button">
-						{this.state.editQuestion ? 'Editar Questão' : 'Adicionar Questão'}
+						{this.props.edit ? 'Editar Questionário' : 'Criar Questionário'}
 					</button>
 				</div>
-				<button
-					disabled={this.state.editQuestion || !this.state.nome || !this.state.descricao || !this.state.prazo || this.state.questoes.length === 0}
-					onClick={this.handleSubmit} 
-					type="button" 
-					className="button">
-					{this.props.edit ? 'Editar Questionário' : 'Criar Questionário'}
-				</button>
 			</form>
 		)
 	}

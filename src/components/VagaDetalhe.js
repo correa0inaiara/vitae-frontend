@@ -93,17 +93,16 @@ const VagaDetalhe = ({
 							vagaData.candidatura && Object.keys(vagaData.candidatura).length > 0 ? (
 								<div className="detalhes-candidatura__realizada">
 									<div className="detalhes-candidatura__mensagens">
-										<p className="detalhes-candidatura__mensagem-paragraph">
+										<p className="mensagem mensagem--verde">
 											Parabéns!
 										</p>
-										<p className="detalhes-candidatura__mensagem-paragraph">
+										<p className="mensagem mensagem--verde">
 											Você já se candidatou à essa vaga.
 										</p>
-										<p className="detalhes-candidatura__mensagem-paragraph">
+										<p className="mensagem mensagem--verde">
 											Boa Sorte!
 										</p>
 									</div>
-									<p className="detalhes-candidatura__curriculo">{vagaData.candidatura.curriculo.nome}</p>
 								</div>
 							) : (
 								<div className="detalhes-candidatura__nao-realizada">
@@ -127,13 +126,15 @@ const VagaDetalhe = ({
 										) : ''
 									}
 									
-									<button
-										disabled={!curriculoSelecionado}
-										onClick={handleCandidatura} 
-										type="button" 
-										className="button">
-										Me Candidatar à essa Vaga
-									</button>
+									<div className="buttons">
+										<button
+											disabled={!curriculoSelecionado}
+											onClick={handleCandidatura} 
+											type="button" 
+											className="button">
+											Me Candidatar à essa Vaga
+										</button>
+									</div>
 								</div>
 							)
 						}	

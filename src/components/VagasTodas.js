@@ -53,7 +53,7 @@ const VagasTodas = () => {
 				resultCurriculos = JSON.parse(_curriculos)
 			} else {
 				resultCurriculos = await getCurriculums(user.usuarioId, user.token)
-				localStorage.setItem('curriculos', JSON.stringify(resultVagas))
+				localStorage.setItem('curriculos', JSON.stringify(resultCurriculos))
 			}
 			setCurriculos(resultCurriculos)
 

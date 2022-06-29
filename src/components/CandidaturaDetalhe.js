@@ -61,13 +61,15 @@ const CandidaturaDetalhe = () => {
 
 	return (
 		<div className="candidatura-detalhes">
-			<Link
-				className='detalhe-item__link' 
-				to='/processos-seletivos/etapa-1'>
-				<button
-					className="button button--green"
-					>Voltar para as Candidaturas</button>
-			</Link>
+			<div className="buttons">
+				<Link
+					className='detalhe-item__link' 
+					to='/processos-seletivos/etapa-1'>
+					<button
+						className="button button--green"
+						>Voltar para as Candidaturas</button>
+				</Link>
+			</div>
 			<div className="candidatura-detalhe">
 				{
 					candidato ? (

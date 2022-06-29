@@ -263,13 +263,16 @@ export class ProcessoSeletivoFormulario extends Component {
 						) : ''
 					}
 				</div>
-				<button
-					disabled={!this.state.nome || !this.state.descricao || this.state.vagaSelecionada === 'Selecione' }
-					onClick={this.handleSubmit} 
-					type="button" 
-					className="button">
-					{this.props.edit ? 'Editar Vaga' : 'Criar Vaga'}
-				</button>
+				
+				<div className="buttons">
+					<button
+						disabled={!this.state.nome || !this.state.descricao || this.state.vagaSelecionada === 'Selecione' }
+						onClick={this.handleSubmit} 
+						type="button" 
+						className="button">
+						{this.props.edit ? 'Editar Vaga' : 'Criar Vaga'}
+					</button>
+				</div>
 			</form>
 		)
 	}

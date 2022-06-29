@@ -5,6 +5,11 @@
 	color: var(--background-secondary-color);
 }
 
+.mensagem--verde {
+	color: var(--button-secondary-color);
+	font-weight: bold;
+}
+
 .mensagem--big-margin {
 	margin: 40px 0;
 }

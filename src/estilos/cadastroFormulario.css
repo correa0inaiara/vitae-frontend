@@ -12,10 +12,6 @@
 	background-color: var(--background-terciary-color);
 }
 
-/* .opcoes-container {
-	margin-bottom: 20px;
-} */
-
 .opcoes-container .section-name {
 	font-weight: bold;
 	margin: 15px 0 5px;
@@ -117,7 +113,7 @@
 }
 
 .lista {
-	margin: 10px 0;
+	margin: 30px 0;
 }
 
 .listagem {

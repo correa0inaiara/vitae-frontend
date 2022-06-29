@@ -12,11 +12,13 @@ export const AcessoNegado = (props) => {
 				
 				<div className="acesso-negado">
 					<p className="acesso-negado__text">Você não tem permissão para acessar esta página.</p>
-					{<Link 
-						className="acesso-negado__button"
-						to='/'>
-                        <Button buttonClass='button button--green' buttonText='Ir para a Home' />
-                    </Link>}
+					<div className="buttons">
+						<Link 
+							className="acesso-negado__button"
+							to='/'>
+							<Button buttonClass='button button--green' buttonText='Ir para a Home' />
+						</Link>
+					</div>
 				</div>
 
 				<Outlet />

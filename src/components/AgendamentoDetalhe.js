@@ -2,7 +2,7 @@ import React from 'react'
 
 const AgendamentoDetalhe = ({data, index}) => {
 	return (
-		<div key={index} className="detalhe">
+		<div key={index} className="detalhes-agendamento">
 			<div className="detalhe-item">
 				<span className="detalhe-item__label">Motivo:</span>
 				<span className="detalhe-item__value">{data.motivo}</span>

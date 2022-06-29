@@ -318,14 +318,16 @@ export class AgendamentoFormulario extends Component {
 						) : ''
 					}
 				</div>}
-			
-				<button
-					disabled={!this.state.motivo || !this.state.dia || !this.state.hora || !this.state.localizacao || this.state.candidatoSelecionadoId === 'Selecionado'}
-					onClick={this.handleSubmit} 
-					type="button" 
-					className="button">
-					{this.props.edit ? 'Editar Agendamento' : 'Criar Agendamento'}
-				</button>
+				
+				<div className="buttons">
+					<button
+						disabled={!this.state.motivo || !this.state.dia || !this.state.hora || !this.state.localizacao || this.state.candidatoSelecionadoId === 'Selecionado'}
+						onClick={this.handleSubmit} 
+						type="button" 
+						className="button">
+						{this.props.edit ? 'Editar Agendamento' : 'Criar Agendamento'}
+					</button>
+				</div>
 			</form>
 		)
 	}
