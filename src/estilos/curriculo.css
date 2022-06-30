@@ -32,6 +32,10 @@
 	flex-direction: column;
 }
 
+.listagem-item__block {
+	margin: 15px 0;
+}
+
 .listagem-item__subitem {
 	display: flex;
 	flex-direction: column;
@@ -41,4 +45,16 @@
 .listagem-item__subitem-label {
 	font-weight: bold;
 	margin: 0 5px 10px 0;
+}
+
+.item-questao {
+	margin: 15px 0;
+}
+
+.item-questao__name {
+	margin: 15px 0;
+}
+
+.item-questao__label {
+	font-weight: bold;	
 }

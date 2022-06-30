@@ -561,6 +561,38 @@ export async function getQuestionnaire(usuarioId, token) {
 	}
 }
 
+export async function registerAnsweredQuestions(token, questoesArr) {
+	if (questoesArr && questoesArr.length > 0) {
+		let qr = []
+		questoesArr.map(async item => {
+			let obj = {
+				resposta: item.resposta
+			}
+			qr = await createAnsweredQuestion(item.questoesId, token, obj)
+		})
+		return qr
+	} else {
+		return []
+	}
+}
+
+export async function createAnsweredQuestion(questoesId, token, data) {
+	try {
+		const response = await fetch(`${apiURL}/questoesrespondidas/${questoesId}`, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
+			},
+			body: JSON.stringify(data)
+		})
+		const json = await response.json();
+		return json;
+	} catch (error) {
+		console.log('Erro ao realizar requisição: ', error)
+		return error
+	}
+}
+
 export async function getCompany(usuarioId, token) {
 	try {
 		const response = await fetch(`${apiURL}/empresas/${usuarioId}`, {

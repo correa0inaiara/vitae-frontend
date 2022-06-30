@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createApplication, deleteVacancy } from '../data/ApiService'
+import { createApplication, deleteVacancy, registerAnsweredQuestions } from '../data/ApiService'
 import VagaFormulario from './VagaFormulario'
 
 const VagaDetalhe = ({ 
@@ -42,7 +42,10 @@ const VagaDetalhe = ({
 	const [vagaTipoContratacao, setVagaTipoContratacao] = useState(vaga.tipoContratacao)
 	const [vagaTipoContratacaoId, setVagaTipoContratacaoId] = useState(vaga.tipocontratacaoid)
 	const [vagaQuestionarioId, setVagaQuestionarioId] = useState(vaga.questionarioid)
+	const [vagaQuestoesId, setVagaQuestoesId] = useState(vaga.questionarioid)
 	const [vagaQuestionario, setVagaQuestionario] = useState(vaga.questionario)
+	const [vagaQuestoesRespondidas, setVagaQuestoesRespondidas] = useState([])
+	const [vagaQuestaoRespondidaArr, setVagaQuestaoRespondidaArr] = useState([])
 
 	const [vagaBeneficiosOferecidos, setBeneficiosOferecidos] = useState(beneficiosOferecidos)
 	
@@ -77,10 +80,50 @@ const VagaDetalhe = ({
 		setEditData(data)
 	}
 
-	const handleCandidatura = function () {
+	const handleOnBlur = function (questaoid, questao, index, event) {
+		if (vagaQuestoesRespondidas && vagaQuestoesRespondidas.length > 0) {
+			const indexArr = vagaQuestoesRespondidas.findIndex(item => item.questoesId === questaoid)
+            console.log("🚀 ~ file: VagaDetalhe.js ~ line 90 ~ handleOnBlur ~ indexArr", indexArr)
+			if (indexArr !== -1) {
+				vagaQuestoesRespondidas[index].resposta = event.target.value
+				vagaQuestoesRespondidas[index].questoesId = questaoid
+				vagaQuestoesRespondidas[index].questao = questao
+				setVagaQuestoesRespondidas(vagaQuestoesRespondidas)
+			} else {
+				const data = {
+					resposta: event.target.value,
+					questoesId: questaoid,
+					questao: questao
+				}
+				
+				const arr = [...vagaQuestoesRespondidas, data]
+				setVagaQuestoesRespondidas(arr)
+			}
+		} else {
+			const data = {
+				resposta: event.target.value,
+				questoesId: questaoid,
+				questao: questao
+			}
+			
+			const arr = [...vagaQuestoesRespondidas, data]
+			setVagaQuestoesRespondidas(arr)
+		}
+		console.log("🚀 ~ file: VagaDetalhe.js ~ line 93 ~ handleOnBlur ~ vagaQuestoesRespondidas", vagaQuestoesRespondidas)
+
+	}
+
+	const handleCandidatura = async function () {
 		const candidatura = createApplication(usuario.usuarioId, vagaData.vagaid, curriculoSelecionado, usuario.token)
+		
+		const questoes = await registerAnsweredQuestions(usuario.token, vagaQuestoesRespondidas)
+		
 		setCurriculoSelecionado('')
 		callback()
+	}
+
+	const handleOnChange = function () {
+
 	}
 	
 	return (
@@ -108,20 +151,67 @@ const VagaDetalhe = ({
 									<p className="candidatura-nao-realizada__mensagem">Você ainda não se candidatou à essa vaga. </p>
 									{
 										curriculos && curriculos.length > 0 ? (
-											<div className="selecao">
-												<p className="section-name">Currículos</p>
-												<select
-													name="curriculoSelecionado"
-													value={curriculoSelecionado}
-													onChange={(e) => setCurriculoSelecionado(e.target.value)}
-													className='select' 
-													id="sel-curriculoSelecionado">
-													<option value="selecione">Selecione</option>
-													{curriculos.map(item => 
-														<option key={item.curriculoid} value={item.curriculoid}>{item.nome}</option>
-													)}
-												</select>
-											</div>
+											<>
+												<div className="selecao">
+													<p className="section-name">Currículos</p>
+													<select
+														name="curriculoSelecionado"
+														value={curriculoSelecionado}
+														onChange={(e) => setCurriculoSelecionado(e.target.value)}
+														className='select' 
+														id="sel-curriculoSelecionado">
+														<option value="selecione">Selecione</option>
+														{curriculos.map(item => 
+															<option key={item.curriculoid} value={item.curriculoid}>{item.nome}</option>
+														)}
+													</select>
+												</div>
+												{
+													vagaQuestionario && Object.keys(vagaQuestionario).length > 0 ? (
+														<div className="questionario">
+															<p className="subtitle">Questionário: {vagaQuestionario.nome}</p>
+															<div className="listagem">
+																{
+																	vagaQuestoesRespondidas && vagaQuestoesRespondidas.length > 0 ? (
+																		vagaQuestoesRespondidas.map((item, index) => 
+																			<div key={index} className="listagem-item listagem-item__block">
+																				<div className="listagem-item__subitem">
+																					<span className="listagem-item__subitem-label">Questão:</span>
+																					<span className="listagem-item__subitem-value">{item.questao}</span>
+																				</div>
+																				<div className="listagem-item__subitem">
+																					<span className="listagem-item__subitem-label">Resposta:</span>
+																					<span className="listagem-item__subitem-value">{item.resposta}</span>
+																				</div>
+																			</div>
+																		)
+																	) : ''
+																}
+															</div>
+															<ul className="lista-questionario">
+																{vagaQuestionario.questoes.map((item, index) => 
+																	<li key={index} className="item-questao">
+																		<p className="item-questao__name">
+																			<span className="item-questao__label">Questão: </span>
+																			<span className="item-questao__value">{item.questao}</span>
+																		</p>
+																		<label htmlFor="inp-resposta" className="label">
+																			Resposta
+																			<textarea
+																				value={vagaQuestaoRespondidaArr[index]}
+																				name={`resposta-${index}`}
+																				onBlur={(e) => handleOnBlur(item.questoesid, item.questao, index, e)}
+																				onChange={(e) => setVagaQuestaoRespondidaArr(e)}
+																				rows="15"
+																				id={`${item.questoesid}`} />
+																		</label>
+																	</li>
+																)}
+															</ul>
+														</div>
+													) : ''
+												}
+											</>
 										) : ''
 									}
 									
@@ -200,8 +290,8 @@ const VagaDetalhe = ({
 				<div className="detalhe-item">
 					<p className="detalhe-item__label">Questionário:</p>
 					{
-						vagaQuestionario ? (
-							<p className="detalhe-item__value">{vagaQuestionario}</p>
+						vagaQuestionarioId ? (
+							<p className="detalhe-item__value">{vagaQuestionarioId}</p>
 						) : (
 							<p className="mensagem">Essa vaga não tem questionário associado.</p>
 						)
