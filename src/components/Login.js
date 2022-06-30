@@ -58,7 +58,7 @@ const Login = () => {
 				className="label">
 				Senha
 				<input 
-					type="text" 
+					type="password" 
 					value={senha}
 					onChange={(event) => setSenha(event.target.value)}
 					id="senhaField"

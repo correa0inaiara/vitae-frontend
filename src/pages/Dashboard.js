@@ -117,18 +117,18 @@ const Dashboard = () => {
 										to='/processos-seletivos'>
 										<button
 											className="button button--blue"
-											>Vagas</button>
+											>Processos Seletivos</button>
 									</Link>
 								</div>
 							</li>
 							<li className="dashboard-list__item">
-								<p className="mensagem">Em Processos Seletivos, você poderá criar um para cada vaga criada. Mas, somente para aquelas vagas que já possuem candidaturas realizadas. Caso possua candidaturas, poderá iniciar o processo seletivo, e será redirecionado para a primeira etapa do processo seletivo, em que poderá ver as candidaturas para a vaga em questão, os detahes do candidato e do currículo enviado, assim como escolher quais candidatos poderão evoluir para a próxima etapa. A segunda etapa, então do processo seletivo, consiste em agendar as entrevistas com os candidatos escolhidos por você na etapa anterior.</p>
+								<p className="mensagem">Após as etapas do processo seletivo, os agendamentos aparecerão nessa tela.</p>
 								<div className="buttons">
 									<Link 
-										to='/processos-seletivos'>
+										to='/agendamentos'>
 										<button
 											className="button button--blue"
-											>Vagas</button>
+											>Agendamentos</button>
 									</Link>
 								</div>
 							</li>

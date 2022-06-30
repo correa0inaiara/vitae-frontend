@@ -81,7 +81,7 @@ const Agendamentos = () => {
 					) : (
 						temAgendamentos ? (
 							agendamentos && agendamentos.map((agendamento, index) =>
-								<AgendamentoDetalhe key={index} data={agendamento} /> 
+								<AgendamentoDetalhe key={index} data={agendamento} usuario={usuario} /> 
 							)
 						) : <p className="message">{message}</p> 
 					)
