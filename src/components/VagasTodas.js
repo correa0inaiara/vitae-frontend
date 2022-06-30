@@ -47,17 +47,19 @@ const VagasTodas = () => {
 
 		if (resultVagas && Object.keys(resultVagas).length > 0) {
 
-			const _curriculos = localStorage.getItem("curriculos")
-			let resultCurriculos = []
-			if (_curriculos) {
-				resultCurriculos = JSON.parse(_curriculos)
-			} else {
-				resultCurriculos = await getCurriculums(user.usuarioId, user.token)
-				localStorage.setItem('curriculos', JSON.stringify(resultCurriculos))
-			}
-			setCurriculos(resultCurriculos)
 
 			if (user.tipoUsuario === 'Candidato') {
+
+				const _curriculos = localStorage.getItem("curriculos")
+				let resultCurriculos = []
+				if (_curriculos) {
+					resultCurriculos = JSON.parse(_curriculos)
+				} else {
+					resultCurriculos = await getCurriculums(user.usuarioId, user.token)
+					localStorage.setItem('curriculos', JSON.stringify(resultCurriculos))
+				}
+				setCurriculos(resultCurriculos)
+
 				const _candidaturas = localStorage.getItem("candidaturas")
 				let resultCandidaturas = []
 				if (_candidaturas) {
@@ -85,7 +87,7 @@ const VagasTodas = () => {
 			setTemVagas(false);
 			const mensagem = 'Você ainda não tem vagas cadastrados'
 			setMessage(mensagem)
-			loading(false)
+			setLoading(false)
 		}
 
 		const tipoUsuario = user.tipoUsuario;

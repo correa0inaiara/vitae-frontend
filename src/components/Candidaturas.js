@@ -1,20 +1,57 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { registerSelectedCandidate } from '../data/ApiService';
+import { getSelectedCandidates, registerSelectedCandidate } from '../data/ApiService';
 
 const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoData }) => {
 
 	const [candidaturas, setCandidaturas] = useState(candidaturasData)
-	const [candidatoSelecionado, setCandidatoSelecionado] = useState(false)
+	const [candidatosSelecionados, setCandidatosSelecionados] = useState(candidaturasData)
+	const [candidatoSelecionado, setCandidatoSelecionado] = useState({selecionado: false, candidaturaId: ''})
 	const [processoSeletivo, setProcessoSeletivo] = useState(processoSeletivoData)
 	const [message, setMessage] = useState('Não há candidaturas para esta vaga');
+
+	useEffect(() => {
+		async function getSelectedCandidatesForApplications() {
+			const candidatosSelecionados = await getSelectedCandidates(processoSeletivo.processoseletivoid, usuario.token)
+            console.log("🚀 ~ file: Candidaturas.js ~ line 18 ~ getSelectedCandidatesForApplications ~ candidatosSelecionados", candidatosSelecionados)
+			setCandidatosSelecionados(candidatosSelecionados)
+
+		}
+		getSelectedCandidatesForApplications()
+	}, [])
 	
 
 	const handleSelectCandidate = async function (candidaturaId) {
 		const result = await registerSelectedCandidate(candidaturaId, processoSeletivo.processoseletivoid, usuario.token)
-		setCandidatoSelecionado(true)
+
+		const resultCandidatura = checkSelection(candidaturaId)
+
+		if (resultCandidatura) {
+			const candidatoSelecionado = {
+				selecionado: true,
+				candidaturaId
+			}
+			setCandidatoSelecionado(candidatoSelecionado)
+		}
+
 		callback()
+	}
+
+	const checkSelection = async function (candidaturaId) {
+
+		const candidatosSelecionados = await getSelectedCandidates(processoSeletivo.processoseletivoid, usuario.token)
+		setCandidatosSelecionados(candidatosSelecionados)
+
+		let result = false
+		if (candidatosSelecionados && candidatoSelecionado.length > 0) {
+			result = candidatosSelecionados.find(item => item.candidatoselecionadoid === candidaturaId)
+			// result = result ? true : false
+		}
+
+        console.log("🚀 ~ file: Candidaturas.js ~ line 46 ~ checkSelection ~ result", result)
+		return result
 	}
 	
 	return (
@@ -33,14 +70,16 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 			{
 				candidaturas && candidaturas.length > 0 ? (
 					candidaturas.map((item, index) => 
-						<div key={index} className="detalhes-candidatura">
+						<div key={index} className="detalhes-candidatura detalhes-candidatura--border">
 							<p className="detalhe-item__label">Nome do Candidato:</p>
 							<p className="detalhe-item__value">{item.candidato.nomecompleto}</p>
 							<div className="buttons">
-								<button
+								{
+									candidatoSelecionado.selecionado && candidatoSelecionado.candidaturaId === item.candidaturaid ? 'Candidato já selecionado' : <button
 									onClick={handleSelectCandidate.bind(this, item.candidaturaid)}
 									className="button button--green"
 									>Selecionar Candidato</button>
+								}
 								<Link
 									className='detalhe-item__link detalhe-item__link--etapa'
 									to={`/candidaturas/${item.candidaturaid}`}>

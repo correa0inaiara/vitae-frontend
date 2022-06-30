@@ -46,6 +46,10 @@
     margin: 20px 0;
 }
 
+.detalhes-candidatura--border {
+    border: 1px solid var(--background-secondary-color);
+}
+
 .detalhes-agendamento {
     border: 1px solid var(--background-secondary-color);
     padding: 20px;

@@ -220,7 +220,7 @@ export class VagaFormulario extends Component {
 		const name = target.name;
 
 		if (name === 'nome') {
-			const pattern = /^[a-zA-Z0-9\u00C0-\u00FF ']+$/
+			const pattern = /^[a-zA-Z\u00C0-\u00FF 0-9!#-_&?']+$/
 			this.validacaoRegex(pattern, value, name)
 		}
 
@@ -325,6 +325,7 @@ export class VagaFormulario extends Component {
 		} else {
 			let result = registerVacancy(questionarioId, tipoContratacaoId, usuarioId, token, data, beneficiosOferecidos)
 			if (result) {
+				localStorage.removeItem('vagas')
 				this.setState({created: true})
 				this.props.callback()
 				this.clearForm()
@@ -514,9 +515,6 @@ export class VagaFormulario extends Component {
 										<option key={item.questionarioId} value={item.questionarioId}>{item.nome}</option>
 									)}
 								</select>
-								{/* <div className="error-messages">
-									{this.state.validations.questionarioSelecionado.obrigatorio ? <span className="error-message">Campo obrigatório</span> : '' }
-								</div> */}
 							</div>
 						) : (
 							<div className="lista-vazia">
@@ -536,7 +534,7 @@ export class VagaFormulario extends Component {
 					this.state.beneficios && this.state.beneficios.length > 0 ? (
 						<div className="section section-2">
 							<h2 className="subtitle">Beneficios</h2>
-							{this.state.beneficiosOferecidos && this.state.beneficiosOferecidos.length > 0 ? <div className="lista">
+							{this.state.beneficiosOferecidos && this.state.beneficiosOferecidos.length > 0 ? <div className="listagem">
 								<p className="section-name">Benefícios Adicionados:</p>
 								<ul className="listagem">
 									{listagemBeneficiosOferecidos}

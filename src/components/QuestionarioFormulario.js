@@ -154,7 +154,7 @@ export class QuestionarioFormulario extends Component {
 		const name = target.name;
 
 		if (name === 'nome') {
-			const pattern = /^[a-zA-Z0-9\u00C0-\u00FF ']+$/
+			const pattern = /^[a-zA-Z\u00C0-\u00FF 0-9!#-_&?']+$/
 			this.validacaoRegex(pattern, value, name)
 		}
 
@@ -269,6 +269,7 @@ export class QuestionarioFormulario extends Component {
 		} else {
 			const result = registerQuestionnarie(data, questoes, usuarioId, token)
 			if (result) {
+				localStorage.removeItem('questionarios')
 				this.setState({created: true})
 				this.props.callback()
 			}

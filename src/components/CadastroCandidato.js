@@ -721,7 +721,7 @@ class CadastroCandidato extends React.Component {
 				</div>
 				<div className="section section-5">
 					<h2 className="subtitle">Redes Sociais</h2>
-					{this.state.redesSociais.length > 0 ? <div className="lista">
+					{this.state.redesSociais.length > 0 ? <div className="listagem">
 						<p className="section-name">Suas redes sociais:</p>
 						<ul className="listagem">
 							{listagem}

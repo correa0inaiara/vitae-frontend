@@ -269,7 +269,7 @@ export class ProcessoSeletivoFormulario extends Component {
 						onClick={this.handleSubmit} 
 						type="button" 
 						className="button">
-						{this.props.edit ? 'Editar Vaga' : 'Criar Vaga'}
+						{this.props.edit ? 'Editar Processo Seletivo' : 'Criar Processo Seletivo'}
 					</button>
 				</div>
 			</form>
