@@ -6,3 +6,21 @@
 .subtitle-subtitem {
 	font-size: 18px;
 }
+
+.candidatos-selecionados {
+	display: flex;
+    flex-direction: row;
+	align-items: center;
+	justify-content: center;
+    flex-wrap: wrap;
+}
+
+.candidatos-selecionados .lista-subitem {
+	margin: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+	.lista-subitem > .subtitle {
+		text-align: center;
+	}
+}

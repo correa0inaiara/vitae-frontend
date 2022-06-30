@@ -96,7 +96,7 @@ const ProcessoSeletivoEtapa1 = () => {
 			<h1 className="title">Processo Seletivo</h1>
 			<h2 className="subtitle subtitle-etapa">ETAPA 1: Seleção de Candidatos</h2>
 
-			<div className="lista">
+			<div className="lista-subitem">
 				{
 					loading ? (
 						<Loader />
@@ -105,12 +105,12 @@ const ProcessoSeletivoEtapa1 = () => {
 								candidaturas && candidaturas.length > 0
 							) ? (
 								<>
+									<h2 className="subtitle">Candidatos Selecionados</h2>
 									<div className="candidatos-selecionados">
-										<h2 className="subtitle">Candidatos Selecionados</h2>
 										{
 											candidatosSelecionados && candidatosSelecionados.length > 0 ? (
 												candidatosSelecionados.map((item, index) =>
-													<div key={index} className="lista">
+													<div key={index} className="lista-subitem">
 														<p className="detalhe-item__label">Nome do Candidato: </p>
 														<p className="detalhe-item__value">{item.nomecompleto}</p>
 													</div>
