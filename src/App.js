@@ -18,6 +18,7 @@ import './estilos/vaga.css';
 import './estilos/lista.css';
 import './estilos/processoSeletivo.css';
 import './estilos/dashboard.css';
+import './estilos/relatorios.css';
 
 import MainRoutes from './Routes'
 

@@ -263,45 +263,47 @@ const Relatorios = () => {
 		<div className="relatorios">
 			<h1 className="title">Relatórios</h1>
 
-			{
-				relatorio1 && Object.keys(relatorio1).length > 0 ? (
-					<div className="relatorio">
-						<Bar options={getOptions(text1)} data={relatorio1} height={300} />
-					</div>
-				) : ''
-			}
+			<div className="lista-relatorios">
+				{
+					relatorio1 && Object.keys(relatorio1).length > 0 ? (
+						<div className="relatorio">
+							<Bar options={getOptions(text1)} data={relatorio1} height={300} />
+						</div>
+					) : ''
+				}
 
-			{
-				relatorio2 && Object.keys(relatorio2).length > 0 ? (
-					<div className="relatorio">
-						<Bar options={getOptions(text2, true)} data={relatorio2} height={300} />
-					</div>
-				) : ''
-			}
+				{
+					relatorio2 && Object.keys(relatorio2).length > 0 ? (
+						<div className="relatorio">
+							<Bar options={getOptions(text2, true)} data={relatorio2} height={300} />
+						</div>
+					) : ''
+				}
 
-			{
-				relatorio3 && Object.keys(relatorio3).length > 0 ? (
-					<div className="relatorio">
-						<Doughnut data={relatorio3} />
-					</div>
-				) : ''
-			}
+				{
+					relatorio3 && Object.keys(relatorio3).length > 0 ? (
+						<div className="relatorio">
+							<Doughnut data={relatorio3} />
+						</div>
+					) : ''
+				}
 
-			{
-				relatorio4 && Object.keys(relatorio4).length > 0 ? (
-					<div className="relatorio">
-						<Doughnut data={relatorio4} />
-					</div>
-				) : ''
-			}
+				{
+					relatorio4 && Object.keys(relatorio4).length > 0 ? (
+						<div className="relatorio">
+							<Doughnut data={relatorio4} />
+						</div>
+					) : ''
+				}
 
-			{
-				relatorio5 && Object.keys(relatorio5).length > 0 ? (
-					<div className="relatorio">
-						<Bar options={getOptions(text5)} data={relatorio5} height={300} />
-					</div>
-				) : ''
-			}
+				{
+					relatorio5 && Object.keys(relatorio5).length > 0 ? (
+						<div className="relatorio">
+							<Bar options={getOptions(text5)} data={relatorio5} height={300} />
+						</div>
+					) : ''
+				}
+			</div>
 		</div>
 	)
 }

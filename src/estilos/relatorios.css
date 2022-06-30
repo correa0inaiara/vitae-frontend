@@ -1,0 +1,9 @@
+.relatorio {
+	margin: 50px 0;
+}
+
+@media only screen and (min-width: 768px) {
+	.relatorio {
+		margin: 100px 150px;
+	}
+}
