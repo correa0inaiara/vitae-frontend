@@ -7,3 +7,9 @@
 		margin: 100px 150px;
 	}
 }
+
+@media only screen and (min-width: 1440px) {
+	.relatorio {
+		margin: 100px 350px;
+	}
+}
