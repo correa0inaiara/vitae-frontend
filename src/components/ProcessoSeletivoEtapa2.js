@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { deleteSchedule, getScheduleBySelectionProcess } from '../data/ApiService';
+import { deleteSchedule, getCSVExport, getScheduleBySelectionProcess } from '../data/ApiService';
 import Loader from './Loader';
 import AgendamentoFormulario from './AgendamentoFormulario'
 
@@ -97,6 +97,11 @@ const ProcessoSeletivoEtapa2 = () => {
 		setEditData(data)
 	}
 
+	const handleExport = async function (item) {
+		const filename = `agendamentos-${item.agendamentoid}.csv`
+		const result = await getCSVExport('agendamentos', item.agendamentoid, filename, usuario.token)
+	}
+
 	return (
 		<div className="etapa2">
 			<h1 className="title">Processo Seletivo</h1>
@@ -134,6 +139,11 @@ const ProcessoSeletivoEtapa2 = () => {
 										</div>
 									</div>
 									<div className="buttons">
+										<button 
+											onClick={handleExport.bind(this, item)}
+											className="button button--blue">
+												Exportar CSV
+										</button>
 										<button 
 											onClick={handleEdit.bind(this, item)}
 											className="button button--yellow">

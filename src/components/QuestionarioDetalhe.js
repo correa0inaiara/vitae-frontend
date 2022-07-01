@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { deleteUserQuestionnaire } from '../data/ApiService'
+import { deleteUserQuestionnaire, getCSVExport } from '../data/ApiService'
 import Editable from './Editable'
 import QuestionarioFormulario from './QuestionarioFormulario'
 
@@ -32,6 +32,11 @@ const QuestionarioDetalhe = ({ callback, data, index, usuario }) => {
 		}
 		setEditData(data)
 	}
+	
+	const handleExport = async function () {
+		const filename = `questionarios-${questionario.questionarioid}.csv`
+		const result = await getCSVExport('questionarios', questionario.questionarioid, filename, usuario.token)
+	}
 
 	return (
 		<div key={index} className="detalhe">
@@ -57,6 +62,11 @@ const QuestionarioDetalhe = ({ callback, data, index, usuario }) => {
 				))}
 			</div>
 			<div className="buttons">
+				<button 
+					onClick={handleExport}
+					className="button button--blue">
+						Exportar CSV
+				</button>
 				<button 
 					onClick={handleEdit}
 					className="button button--yellow">

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useState } from 'react'
-import { deleteUserCurriculum } from '../data/ApiService'
+import { deleteUserCurriculum, getCSVExport } from '../data/ApiService'
 import CurriculoFormulario from './CurriculoFormulario'
 
 const CurriculoDetalhe = ({callback, data, usuario}) => {
@@ -16,6 +16,12 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 	const [experiencias, setExperiencias] = useState(data.experiencias);
 	const [habilidades, setHabilidades] = useState(data.habilidades);
 	const [idiomas, setIdiomas] = useState(data.idiomas);
+
+	
+	const handleExport = async function (item) {
+		const filename = `curriculos-${curriculoId}.csv`
+		const result = await getCSVExport('curriculos', curriculoId, filename, usuario.token)
+	}
 
 	const handleDelete = async function () {
 		const result = await deleteUserCurriculum(curriculoId, usuario.token)
@@ -174,6 +180,11 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 			</div>
 			<div className="buttons">
 				<button 
+					onClick={handleExport}
+					className="button button--blue">
+						Exportar CSV
+				</button>
+				<button 
 					onClick={handleEdit}
 					className="button button--yellow">
 						Editar
@@ -182,7 +193,7 @@ const CurriculoDetalhe = ({callback, data, usuario}) => {
 					onClick={handleDelete}
 					className="button button--red">
 						Delete
-					</button>
+				</button>
 			</div>
 			{
 				edit ? (

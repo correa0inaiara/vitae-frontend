@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createApplication, deleteVacancy, registerAnsweredQuestions } from '../data/ApiService'
+import { createApplication, deleteVacancy, getCSVExport, registerAnsweredQuestions } from '../data/ApiService'
 import VagaFormulario from './VagaFormulario'
 
 const VagaDetalhe = ({ 
@@ -121,9 +121,10 @@ const VagaDetalhe = ({
 		setCurriculoSelecionado('')
 		callback()
 	}
-
-	const handleOnChange = function () {
-
+	
+	const handleExport = async function () {
+		const filename = `vagas-${vagaData.vagaid}.csv`
+		const result = await getCSVExport('vagas', vagaData.vagaid, filename, usuario.token)
 	}
 	
 	return (
@@ -316,6 +317,11 @@ const VagaDetalhe = ({
 				!todas ? (
 					<div className="detalhes-gerenciamento">
 						<div className="buttons">
+							<button 
+								onClick={handleExport}
+								className="button button--blue">
+									Exportar CSV
+							</button>
 							<button 
 								onClick={handleEdit}
 								className="button button--yellow">

@@ -32,6 +32,39 @@ export async function getSchedule(usuarioId, token) {
 	return result
 }
 
+export async function getCSVExport(rota, resourceId, filename, token) {
+	try {
+		const response = await fetch(
+			`${apiURL}/export/${resourceId}?TableName=${rota}`, {
+			method: 'GET',
+			headers: {
+				'Accept': 'text/csv', 'Content-Type': 'text/csv', 'Token': `${token}`
+			}
+		})
+		const text = await response.text()
+		const download = await downloadCSV(filename, text)
+		
+	} catch (error) {
+		console.log('Erro ao realizar requisição: ', error)
+		return error
+	}
+}
+
+export async function downloadCSV(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+
 export async function getScheduleBySelectionProcess(processoSeletivoId, token) {
 	try {
 		const response = await fetch(`${apiURL}/agendamentos/${processoSeletivoId}`, {

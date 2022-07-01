@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { deleteUserSelectionProcess, getAllApplicationsByVacancy } from '../data/ApiService'
+import { deleteUserSelectionProcess, getAllApplicationsByVacancy, getCSVExport } from '../data/ApiService'
 import ProcessoSeletivoFormulario from './ProcessoSeletivoFormulario'
 
 const ProcessoSeletivoDetalhe = ({ callback, data, index, usuario }) => {
@@ -55,6 +55,11 @@ const ProcessoSeletivoDetalhe = ({ callback, data, index, usuario }) => {
 		getCandidaturas()
 	}, [])
 	
+	const handleExport = async function (item) {
+		const filename = `processosseletivos-${processoSeletivoData.processoseletivoid}.csv`
+		const result = await getCSVExport('processosseletivos', processoSeletivoData.processoseletivoid, filename, usuario.token)
+	}
+	
 	return (
 		<div key={index} className="detalhe">
 			<div className="detalhes-">
@@ -73,6 +78,11 @@ const ProcessoSeletivoDetalhe = ({ callback, data, index, usuario }) => {
 				</div>
 			</div>
 			<div className="buttons">
+				<button 
+					onClick={handleExport}
+					className="button button--blue">
+						Exportar CSV
+				</button>
 				<button 
 					onClick={handleEdit}
 					className="button button--yellow">
