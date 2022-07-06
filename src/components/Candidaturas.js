@@ -15,7 +15,6 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 	useEffect(() => {
 		async function getSelectedCandidatesForApplications() {
 			const candidatosSelecionados = await getSelectedCandidates(processoSeletivo.processoseletivoid, usuario.token)
-            console.log("🚀 ~ file: Candidaturas.js ~ line 18 ~ getSelectedCandidatesForApplications ~ candidatosSelecionados", candidatosSelecionados)
 			setCandidatosSelecionados(candidatosSelecionados)
 
 		}
@@ -50,7 +49,6 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 			// result = result ? true : false
 		}
 
-        console.log("🚀 ~ file: Candidaturas.js ~ line 46 ~ checkSelection ~ result", result)
 		return result
 	}
 	

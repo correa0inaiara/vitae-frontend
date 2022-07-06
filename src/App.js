@@ -19,6 +19,7 @@ import './estilos/lista.css';
 import './estilos/processoSeletivo.css';
 import './estilos/dashboard.css';
 import './estilos/relatorios.css';
+import './estilos/mensagem.css';
 
 import MainRoutes from './Routes'
 

@@ -241,7 +241,6 @@ export class QuestionarioFormulario extends Component {
 		}
 
 		const result = await editQuestionnaire(questionarioId, token, update)
-        console.log("🚀 ~ file: QuestionarioFormulario.js ~ line 253 ~ QuestionarioFormulario ~ handleEditSubmit ~ result", result)
 
 		if (result) {
 			this.clearForm();

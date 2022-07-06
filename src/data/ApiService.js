@@ -793,8 +793,7 @@ export async function createUser(usuario) {
 			headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
 			body: JSON.stringify(usuario)
 		})
-		const json = await response.json();
-		return json[0].usuarioid;
+		return response
 	} catch (error) {
         console.log("Erro ao realizar requisição: ", error)
 		return error
@@ -885,9 +884,10 @@ export async function registerUser(data, tipoUsuario) {
 			loginSocial: data.logadoComGoogle
 		}
 
-		let usuarioDados
+		let empresa = ''
+		let candidato = ''
 		if (tipoUsuario === 'Candidato') {
-			usuarioDados = {
+			candidato = {
 				nomeCompleto: data.nomeCandidato,
 				cpf: data.cpf,
 				profissao: data.profissao,
@@ -896,7 +896,7 @@ export async function registerUser(data, tipoUsuario) {
 				website: data.website
 			}
 		} else {
-			usuarioDados = {
+			empresa = {
 				nomeDaEmpresa: data.nomeEmpresa,
 				cnpj: data.cnpj,
 				ramoDaEmpresa: data.ramo,
@@ -926,21 +926,23 @@ export async function registerUser(data, tipoUsuario) {
 		}
 		const redesSociais = data.redesSociais
 
+
+		const dataToSend = {
+			usuario,
+			contatos,
+			endereco,
+			redesSociais,
+			empresa,
+			candidato
+		}
+
 		const credenciais = {
 			email: data.email,
 			senha: data.senha
 		}
 		
-		const usuarioId = await createUser(usuario)
-		if (tipoUsuario === 'Candidato') {
-			const candidatoId = await createCandidate(usuarioId, usuarioDados)
-		} else {
-			const empresaId = await createCompany(usuarioId, usuarioDados)
-		}
-		const contato = await createContact(usuarioId, contatos)
-		const enderecoId = await createAddress(usuarioId, endereco)
-		const redeSocial = await createSocialNetwork(usuarioId, redesSociais)
-		return true;
+		const resultUser = await createUser(dataToSend)
+		return resultUser
 	} catch (error) {
         console.log('Erro no registro do usuário: ', error);
 		return false;

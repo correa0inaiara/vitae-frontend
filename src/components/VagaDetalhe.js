@@ -83,7 +83,6 @@ const VagaDetalhe = ({
 	const handleOnBlur = function (questaoid, questao, index, event) {
 		if (vagaQuestoesRespondidas && vagaQuestoesRespondidas.length > 0) {
 			const indexArr = vagaQuestoesRespondidas.findIndex(item => item.questoesId === questaoid)
-            console.log("🚀 ~ file: VagaDetalhe.js ~ line 90 ~ handleOnBlur ~ indexArr", indexArr)
 			if (indexArr !== -1) {
 				vagaQuestoesRespondidas[index].resposta = event.target.value
 				vagaQuestoesRespondidas[index].questoesId = questaoid
@@ -109,7 +108,6 @@ const VagaDetalhe = ({
 			const arr = [...vagaQuestoesRespondidas, data]
 			setVagaQuestoesRespondidas(arr)
 		}
-		console.log("🚀 ~ file: VagaDetalhe.js ~ line 93 ~ handleOnBlur ~ vagaQuestoesRespondidas", vagaQuestoesRespondidas)
 
 	}
 

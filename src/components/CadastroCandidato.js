@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react'
 import { Navigate } from 'react-router-dom';
 import { login, registerUser } from '../data/ApiService';
+import Mensagem from './Mensagem';
 
 class CadastroCandidato extends React.Component {
 
 	constructor (props) {
 		super(props);
 		this.state = {
+			mensagemDeErro: '',
 			logadoComGoogle: false,
 			nomeCandidato: '',
 			cpf: '',
@@ -105,7 +107,6 @@ class CadastroCandidato extends React.Component {
 			registered: false
 		}
 
-
 		this.handleOnChange = this.handleOnChange.bind(this);
     	this.handleFormSubmit = this.handleFormSubmit.bind(this);
     	this.handleAddRedeSocial = this.handleAddRedeSocial.bind(this);
@@ -165,22 +166,6 @@ class CadastroCandidato extends React.Component {
 		const value = (target.type === 'checkbox' || target.type === 'radio') ? target.checked : target.value;
 		const name = target.name;
 
-		if (name === 'dataNascimento') {
-			const newDate = new Date(value)
-			const year = newDate.getFullYear() + 1
-			if (!newDate || (year < 1922 || year > 2004)) {
-				console.log('Erro de definição da data de nascimento')
-				this.setState((item) => {
-					return item.validations.dataNascimento.invalido = true
-				})
-			}
-			else {
-				this.setState((item) => {
-					return item.validations.dataNascimento.invalido = false
-				})
-			}
-		}
-
 		if (name === 'senha' || name === 'confirmarSenha') {
 			if (this.state.senha === this.state.confirmarSenha) {
 				this.setState((item) => {
@@ -212,39 +197,81 @@ class CadastroCandidato extends React.Component {
 
 		registerUser(this.state, 'Candidato')
 		.then(res => {
-			if (this.state.logadoComGoogle) {
-				login({email: this.state.email, senha: null, loginSocial: true})
-				.then(async res => {
-					const loginResult = await res.json();
-					const _user = JSON.parse(localStorage.getItem("user"))
-					if (_user) {
-						const user = {
-							token: loginResult.token,
-							usuarioId: loginResult.usuarioId,
-							tipoUsuario: loginResult.tipoUsuario,
-							loginSocialToken: _user.loginSocialToken
-						} 
-						localStorage.setItem("user", JSON.stringify(user))
-					}
+			if (res.ok) {
+				if (this.state.logadoComGoogle) {
+					login({email: this.state.email, senha: null, loginSocial: true})
+					.then(async res => {
+						if (res.ok) {
+							const loginResult = await res.json();
+							const _user = JSON.parse(localStorage.getItem("user"))
+							if (_user) {
+								const user = {
+									token: loginResult.token,
+									usuarioId: loginResult.usuarioId,
+									tipoUsuario: loginResult.tipoUsuario,
+									loginSocialToken: _user.loginSocialToken
+								} 
+								localStorage.setItem("user", JSON.stringify(user))
+								this.props.redirect()
+							}
+						} else {
+							res.text().then(text => { 
+								this.setState({
+									mensagemDeErro: text
+								})
+							})
+						}
+					})
+					.catch(err => {
+						err.text().then(text => { 
+							this.setState({
+								mensagemDeErro: text
+							})
+						})
+					})
+				} else {
+					login({email: this.state.email, senha: this.state.senha, loginSocial: false})
+					.then(async res => {
+						if (res.ok) {
+							const loginResult = await res.json();
+							const user = {
+								token: loginResult.token,
+								usuarioId: loginResult.usuarioId,
+								tipoUsuario: loginResult.tipoUsuario
+							} 
+							localStorage.setItem("user", JSON.stringify(user))
+							this.props.redirect()
+						} else {
+							res.text().then(text => { 
+								this.setState({
+									mensagemDeErro: text
+								})
+							})
+						}
+					})
+					.catch(err => {
+						this.setState({
+							mensagemDeErro: err
+						})
+					})
+				}
+				this.setState({
+					registered: true,
+					mensagemDeErro: ''
 				})
-				.catch(err => console.log('err: ', err))
 			} else {
-				login({email: this.state.email, senha: this.state.senha, loginSocial: false})
-				.then(async res => {
-					const loginResult = await res.json();
-					const user = {
-						token: loginResult.token,
-						usuarioId: loginResult.usuarioId,
-						tipoUsuario: loginResult.tipoUsuario
-					} 
-					localStorage.setItem("user", JSON.stringify(user))
+				res.text().then(text => { 
+					this.setState({
+						mensagemDeErro: text
+					})
 				})
-				.catch(err => console.log('err: ', err))
 			}
-			this.setState({registered: true})
 		})
 		.catch(err => {
-			this.setState({registered: false})
+			this.setState({
+				registered: false,
+				mensagemDeErro: err
+			})
 		})
 
 		event.preventDefault();
@@ -768,17 +795,39 @@ class CadastroCandidato extends React.Component {
 					</div>
 				</div>
 				<hr />
+				{
+					this.state.registered ? (
+						<Navigate to='/dashboard' replace={true} />
+					) : (
+						<Mensagem mensagem={this.state.mensagemDeErro} />
+					)
+				}
 				<div className="buttons">
 					<button
-						disabled={!this.state.validacaoConcluida} 
+						disabled={
+							!this.state.nomeCandidato || 
+							!this.state.cpf || 
+							!this.state.profissao || 
+							!this.state.carteiraHabilitacao || 
+							!this.state.dataNascimento || 
+							!this.state.celular || 
+							!this.state.telefone || 
+							!this.state.email || 
+							!this.state.senha || 
+							!this.state.confirmarSenha || 
+							!this.state.numero || 
+							!this.state.bairro || 
+							!this.state.cidade || 
+							!this.state.cep || 
+							this.state.estado === 'Selecione' ||
+							!this.state.website ||
+							!this.state.logradouro
+						} 
 						type="submit" 
 						className="button">
 						Me cadastre
 					</button>
 				</div>
-				{this.state.registered && (
-					<Navigate to='/dashboard' replace={true} />
-				)}
 			</form>
 		)
 	}

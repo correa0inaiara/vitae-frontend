@@ -124,6 +124,9 @@ class CurriculoFormulario extends React.Component {
 
 		this.handleOnChange = this.handleOnChange.bind(this);
     	this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    	this.handleEditSubmit = this.handleEditSubmit.bind(this);
+    	this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
+		
     	this.handleValidations = this.handleValidations.bind(this);
     	this.validacaoRegex = this.validacaoRegex.bind(this);
     	this.checkValidations = this.checkValidations.bind(this);
@@ -316,9 +319,28 @@ class CurriculoFormulario extends React.Component {
 		})
 	}
 
+	async handleRegisterSubmit(event, usuarioId, token, data) {
+		const result = await registerCurriculum(usuarioId, token, data)
+		if (result) {
+			this.setState({registered: true})
+			this.props.callback()
+			this.clearForm()
+		} else {
+			this.setState({registered: false})
+		}
+	}
+
+	async handleEditSubmit(event, token, data) {
+		const curriculoId = this.props.data.curriculoId
+		const result = await editUserCurriculum(curriculoId, token, data)
+		if (result) {
+			this.props.callback()
+			this.clearForm()
+		}
+	}
+
 	handleFormSubmit(event) {
 		event.preventDefault();
-		console.log(this.state)
 
 		const data = {
 			nome: this.state.nome,
@@ -371,21 +393,9 @@ class CurriculoFormulario extends React.Component {
 			data.habilidades = habilidades
 			data.experiencias = experiencias
 			data.idiomas = idiomas
-			const curriculoId = this.props.data.curriculoId
-			const result = editUserCurriculum(curriculoId, token, data)
-			if (result) {
-				this.props.callback()
-				this.clearForm()
-			}
+			this.handleEditSubmit(event, token, data)
 		} else {
-			const result = registerCurriculum(usuarioId, token, data)
-			if (result) {
-				this.setState({registered: true})
-				this.props.callback()
-				this.clearForm()
-			} else {
-				this.setState({registered: false})
-			}
+			this.handleRegisterSubmit(event, usuarioId, token, data)
 		}
 	}
 

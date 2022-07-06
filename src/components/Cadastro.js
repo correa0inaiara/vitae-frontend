@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import CadastroCandidato from './CadastroCandidato';
 import CadastroEmpresa from './CadastroEmpresa';
 import SocialLogin from './SocialLogin';
 
+const redirect = function (event, navigate) {
+	navigate("/dashboard")
+}
+
 const Cadastro = () => {
+	const navigate = useNavigate()
 	const [tipoUsuario, setTipoUsuario] = useState('Empresa');
 
 	return (
@@ -26,8 +32,8 @@ const Cadastro = () => {
 			</div>
 
 			{tipoUsuario === 'Empresa' ?
-				<CadastroEmpresa /> :
-				<CadastroCandidato />}
+				<CadastroEmpresa redirect={redirect.bind(this, navigate)} /> :
+				<CadastroCandidato redirect={redirect.bind(this, navigate)} />}
 
 		</div>
 	)

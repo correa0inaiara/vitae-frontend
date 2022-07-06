@@ -9,8 +9,8 @@ export const ProtectedLayout = (props) => {
 		if (user) {
 			const _user = JSON.parse(user)
 			return {
-				auth: true,
-				role: _user.tipoUsuario
+				auth: _user ? true : false,
+				role: _user ? _user.tipoUsuario : null
 			}
 		} else {
 			return {
