@@ -290,7 +290,7 @@ const VagaDetalhe = ({
 					<p className="detalhe-item__label">Questionário:</p>
 					{
 						vagaQuestionarioId ? (
-							<p className="detalhe-item__value">{vagaQuestionario.nome}</p>
+							<p className="detalhe-item__value">{vagaQuestionario?.nome}</p>
 						) : (
 							<p className="mensagem">Essa vaga não tem questionário associado.</p>
 						)

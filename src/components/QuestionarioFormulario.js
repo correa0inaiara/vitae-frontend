@@ -325,6 +325,7 @@ export class QuestionarioFormulario extends Component {
 							onClick={this.handleEditQuestion.bind(this, index, item)}
 							className="button button--yellow">Editar</button>
 						<button 
+							type="button"
 							disabled={this.state.editQuestion}
 							onClick={this.handleDeleteQuestion.bind(this, index, item)}
 							className="button button--red">Deletar</button>

@@ -184,13 +184,21 @@ export class AgendamentoFormulario extends Component {
 	}
 
 	async handleEditSubmit(token, data) {
-
 		const result = await editSchedule(this.props.data.agendamentoId, token, data)
-
 		if (result) {
 			this.props.callback()
 			this.clearForm()
 		}
+	}
+
+	async handleRegisterSubmit(event, processoSeletivoId, candidatoSelecionadoId, token, data) {
+		let result = await createSchedule(processoSeletivoId, candidatoSelecionadoId, token, data)
+		if (result) {
+			this.setState({created: true})
+			this.props.callback()
+			this.clearForm()
+		}
+		else this.setState({created: false})
 	}
 
 	handleSubmit(event) {
@@ -209,20 +217,9 @@ export class AgendamentoFormulario extends Component {
 		const token = this.state.user.token
 		
 		if (this.props.edit) {
-			const result = this.handleEditSubmit(token, data)
-			if (result) {
-				this.props.callback()
-				this.clearForm()
-			}
+			this.handleEditSubmit(token, data)
 		} else {
-			let result
-				result = createSchedule(processoSeletivoId, candidatoSelecionadoId, token, data)
-			if (result) {
-				this.setState({created: true})
-				this.props.callback()
-				this.clearForm()
-			}
-			else this.setState({created: false})
+			this.handleRegisterSubmit(event, processoSeletivoId, candidatoSelecionadoId, token, data)
 		}
 
 	}

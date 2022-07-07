@@ -15,21 +15,33 @@ const Questionarios = () => {
 	const [loading, setLoading] = useState(false);
 
 	const updateList = async function () {
+		setTemQuestionarios(false);
+		setQuestionarios([]);
+		localStorage.removeItem('questionarios')
 		await getList(savedUser)
 	}
 
 	const getList = async function (user) {
 		setSavedUser(user)
 		setLoading(true)
-		const result = await getQuestionnaire(user.usuarioId, user.token)
+		
 
 		setUsuario({
 			usuarioId: user.usuarioId,
 			token: user.token
 		})
 
-		if (result && result.length > 0) {
-			setQuestionarios(result);
+		const _questionarios = localStorage.getItem("questionarios")
+		let resultQuestionarios = []
+		if (_questionarios) {
+			resultQuestionarios = JSON.parse(_questionarios)
+		} else {
+			resultQuestionarios = await getQuestionnaire(user.usuarioId, user.token)
+			localStorage.setItem('questionarios', JSON.stringify(resultQuestionarios))
+		}
+
+		if (resultQuestionarios && resultQuestionarios.length > 0) {
+			setQuestionarios(resultQuestionarios);
 			setTemQuestionarios(true);
 			setLoading(false)
 		} else {
@@ -40,8 +52,7 @@ const Questionarios = () => {
 			setMessage(mensagem)
 		}
 
-		const tipoUsuario = user.tipoUsuario;
-		return result
+		return resultQuestionarios
 	}
 
 	useEffect(() => {

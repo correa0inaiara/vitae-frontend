@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { editSelectionProcess, getSelectionProcesses, registerSelectionProcess } from '../data/ApiService';
+import { editSelectionProcess, getSelectionProcesses, getVacancy, registerSelectionProcess } from '../data/ApiService';
 
 export class ProcessoSeletivoFormulario extends Component {
 	constructor(props) {
@@ -32,6 +32,8 @@ export class ProcessoSeletivoFormulario extends Component {
 			}
 		}
 
+		this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
+		this.handleEditSubmit = this.handleEditSubmit.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleOnBlur = this.handleOnBlur.bind(this);
 		this.handleOnChange = this.handleOnChange.bind(this);
@@ -58,7 +60,7 @@ export class ProcessoSeletivoFormulario extends Component {
 					vagas = JSON.parse(_vagas)
 
 				} else {
-					vagas = await getSelectionProcesses(userJson.usuarioId, userJson.token)
+					vagas = await getVacancy(userJson.usuarioId, userJson.token)
 					
 					localStorage.setItem('vagas', JSON.stringify(vagas))
 				}
@@ -138,11 +140,6 @@ export class ProcessoSeletivoFormulario extends Component {
 		let value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
 
-		if (name === 'nome') {
-			const pattern = /^[a-zA-Z0-9\u00C0-\u00FF ']+$/
-			this.validacaoRegex(pattern, value, name)
-		}
-
 		this.setState({
 			[name]: value
 		})
@@ -157,19 +154,26 @@ export class ProcessoSeletivoFormulario extends Component {
 		this.setState({
 			nome: '',
 			descricao: '',
-			vagas: [],
 			vagaSelecionada: ''
 		})
 	}
 
 	async handleEditSubmit(usuarioId, token, data) {
-
 		const result = await editSelectionProcess(usuarioId, this.state.processoSeletivoId, token, data)
-
 		if (result) {
 			this.props.callback()
 			this.clearForm()
 		}
+	}
+
+	async handleRegisterSubmit(event, usuarioId, vagaId, token, data) {
+		const result = await registerSelectionProcess(usuarioId, vagaId, token, data)
+		if (result) {
+			this.setState({created: true})
+			this.props.callback()
+			this.clearForm()
+		}
+		else this.setState({created: false})
 	}
 
 	handleSubmit(event) {
@@ -190,13 +194,7 @@ export class ProcessoSeletivoFormulario extends Component {
 			data.vagaId = vagaId
 			this.handleEditSubmit(usuarioId, token, data)
 		} else {
-			const result = registerSelectionProcess(usuarioId, vagaId, token, data)
-			if (result) {
-				this.setState({created: true})
-				this.props.callback()
-				this.clearForm()
-			}
-			else this.setState({created: false})
+			this.handleRegisterSubmit(event, usuarioId, vagaId, token, data)
 		}
 
 	}

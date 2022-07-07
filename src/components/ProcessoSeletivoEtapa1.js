@@ -124,6 +124,7 @@ const ProcessoSeletivoEtapa1 = () => {
 											className='detalhe-item__link'
 											to='/processos-seletivos/etapa-2'>
 											<button
+												disabled={!candidatosSelecionados || candidatosSelecionados.length === 0}
 												className="button button--purple"
 												>Próxima Etapa</button>
 										</Link>

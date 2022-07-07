@@ -54,15 +54,6 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 	
 	return (
 		<div className="candidaturas">
-			<div className="buttons">
-				<Link 
-					className='detalhe-item__link'
-					to='/processos-seletivos'>
-					<button
-						className="button button--grey"
-						>Voltar para os Processos Seletivos</button>
-				</Link>
-			</div>
 			<h1 className="title">Candidaturas</h1>
 			<div className="lista">
 			{

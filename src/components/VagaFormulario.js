@@ -63,6 +63,7 @@ export class VagaFormulario extends Component {
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
 		this.handleOnBlur = this.handleOnBlur.bind(this);
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.checkValidations = this.checkValidations.bind(this);
@@ -278,7 +279,7 @@ export class VagaFormulario extends Component {
 		})
 	}
 
-	async handleEditSubmit(vagaId, token, data, beneficiosOferecidos) {
+	async handleEditSubmit(vagaId, token, data) {
 
 		const beneficiosAdicionados = this.state.beneficiosAdicionados
 		const beneficiosExcluidos = this.state.beneficiosExcluidos
@@ -293,6 +294,16 @@ export class VagaFormulario extends Component {
 			this.props.callback()
 			this.clearForm()
 		}
+	}
+
+	async handleRegisterSubmit(event, questionarioId, tipoContratacaoId, usuarioId, token, data, beneficiosOferecidos) {
+		let result = await registerVacancy(questionarioId, tipoContratacaoId, usuarioId, token, data, beneficiosOferecidos)
+		if (result) {
+			this.setState({created: true})
+			this.props.callback()
+			this.clearForm()
+		}
+		else this.setState({created: false})
 	}
 
 	handleSubmit(event) {
@@ -321,16 +332,9 @@ export class VagaFormulario extends Component {
 		
 		if (this.props.edit) {
 			const vagaId = this.props.data.vagaId
-			this.handleEditSubmit(vagaId, token, data, beneficiosOferecidos)
+			this.handleEditSubmit(vagaId, token, data)
 		} else {
-			let result = registerVacancy(questionarioId, tipoContratacaoId, usuarioId, token, data, beneficiosOferecidos)
-			if (result) {
-				localStorage.removeItem('vagas')
-				this.setState({created: true})
-				this.props.callback()
-				this.clearForm()
-			}
-			else this.setState({created: false})
+			this.handleRegisterSubmit(event, questionarioId, tipoContratacaoId, usuarioId, token, data, beneficiosOferecidos)
 		}
 
 	}
@@ -361,6 +365,7 @@ export class VagaFormulario extends Component {
 						</div>
 						<div className="buttons">
 							<button 
+								type="button"
 								onClick={this.handleDeleteBeneficio.bind(this, index, item)}
 								className="button button--red">Deletar</button>
 						</div>

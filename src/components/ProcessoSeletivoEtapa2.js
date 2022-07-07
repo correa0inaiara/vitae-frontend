@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { deleteSchedule, getCSVExport, getScheduleBySelectionProcess } from '../data/ApiService';
 import Loader from './Loader';
 import AgendamentoFormulario from './AgendamentoFormulario'
+import { Link } from 'react-router-dom';
 
 const ProcessoSeletivoEtapa2 = () => {
 
@@ -104,6 +105,15 @@ const ProcessoSeletivoEtapa2 = () => {
 
 	return (
 		<div className="etapa2">
+			<div className="buttons">
+				<Link 
+					className='detalhe-item__link'
+					to='/processos-seletivos/etapa-1'>
+					<button
+						className="button button--grey"
+						>Voltar para Processos Seletivos Etapa 1</button>
+				</Link>
+			</div>
 			<h1 className="title">Processo Seletivo</h1>
 			<h2 className="subtitle subtitle-etapa">ETAPA 2: Agendamentos</h2>
 
@@ -140,16 +150,19 @@ const ProcessoSeletivoEtapa2 = () => {
 									</div>
 									<div className="buttons">
 										<button 
+											type="button"
 											onClick={handleExport.bind(this, item)}
 											className="button button--blue">
 												Exportar CSV
 										</button>
 										<button 
+											type="button"
 											onClick={handleEdit.bind(this, item)}
 											className="button button--yellow">
 												Editar
 										</button>
 										<button 
+											type="button"
 											onClick={handleDelete.bind(this, item)}
 											className="button button--red">
 												Delete
