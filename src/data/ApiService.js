@@ -436,13 +436,9 @@ export async function getTypesOfHiringAndBenefits(token) {
 
 export async function getVacancy(usuarioId, token) {
 	const empresa = await getCompany(usuarioId, token)
-	if (empresa && empresa.length > 0) {
-		const empresaId = empresa[0].empresaid
-		const vagas = await getUserVacancies(empresaId, token)
-		return vagas
-	} else {
-		return []
-	}
+	const empresaId = empresa[0].empresaid
+	const vagas = await getUserVacancies(empresaId, token)
+	return vagas
 }
 
 export async function createUserOfferedBenefits(vagaId, beneficioId, token) {

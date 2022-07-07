@@ -83,43 +83,21 @@ export class VagaFormulario extends Component {
 
 			
 			if (userJson && userJson.token) {
+				const tiposContratacaoEBeneficios = await getTypesOfHiringAndBenefits(userJson.token)
+				const questionariosResult = await getQuestionnaire(userJson.usuarioId, userJson.token)
 				
-				let tiposContratacaoEBeneficios = []
-				let tiposContratacao = []
-				let beneficios = []
-				let questionarios = []
 				let questionariosArr = []
-
-				const _questionarios = localStorage.getItem('questionarios')
-				const _tiposContratacao = localStorage.getItem('tiposContratacao')
-				const _beneficios = localStorage.getItem('beneficios')
-				if (_questionarios && _tiposContratacao && _beneficios) {
-
-					questionarios = JSON.parse(_questionarios)
-					tiposContratacao = JSON.parse(_tiposContratacao)
-					beneficios = JSON.parse(_beneficios)
-
-				} else {
-					tiposContratacaoEBeneficios = await getTypesOfHiringAndBenefits(userJson.token)
-					const questionariosResult = await getQuestionnaire(userJson.usuarioId, userJson.token)
-					
-					questionariosResult.map(item => {
-						const questionarioObj = item.questionario
-						questionariosArr.push({
-							nome: questionarioObj.nome,
-							questionarioId: questionarioObj.questionarioid
-						})
+				questionariosResult.map(item => {
+					const questionarioObj = item.questionario
+					questionariosArr.push({
+						nome: questionarioObj.nome,
+						questionarioId: questionarioObj.questionarioid
 					})
+				})
 
-					tiposContratacao = tiposContratacaoEBeneficios.tiposContratacao
-					beneficios = tiposContratacaoEBeneficios.beneficios
-					questionarios = questionariosArr
-	
-					localStorage.setItem('questionarios', JSON.stringify(questionariosArr))
-					localStorage.setItem('tiposContratacao', JSON.stringify(tiposContratacao))
-					localStorage.setItem('beneficios', JSON.stringify(beneficios))
-				}
-				
+				const tiposContratacao = tiposContratacaoEBeneficios.tiposContratacao
+				const beneficios = tiposContratacaoEBeneficios.beneficios
+				const questionarios = questionariosArr
 				
 				this.setState((state) => {
 					return { 

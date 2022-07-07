@@ -44,6 +44,8 @@ export class QuestionarioFormulario extends Component {
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleEditSubmit = this.handleEditSubmit.bind(this);
+		this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
 		this.handleOnBlur = this.handleOnBlur.bind(this);
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.checkValidations = this.checkValidations.bind(this);
@@ -248,6 +250,16 @@ export class QuestionarioFormulario extends Component {
 		}
 	}
 
+	async handleRegisterSubmit(event, data, questoes, usuarioId, token) {
+		const result = await registerQuestionnarie(data, questoes, usuarioId, token)
+		if (result) {
+			this.setState({created: true})
+			this.props.callback()
+			this.clearForm()
+		}
+		else this.setState({created: false})
+	}
+
 	handleSubmit(event) {
 		event.preventDefault()
 
@@ -266,16 +278,8 @@ export class QuestionarioFormulario extends Component {
 			const questionarioId = this.props.data.questionarioId
 			this.handleEditSubmit(questionarioId, token, data)
 		} else {
-			const result = registerQuestionnarie(data, questoes, usuarioId, token)
-			if (result) {
-				localStorage.removeItem('questionarios')
-				this.setState({created: true})
-				this.props.callback()
-			}
-			else this.setState({created: false})
+			this.handleRegisterSubmit(event, data, questoes, usuarioId, token)
 		}
-
-		this.clearForm()
 		
 	}
 

@@ -39,7 +39,7 @@ const Vagas = () => {
 			resultVagas = await getVacancy(user.usuarioId, user.token)
 			localStorage.setItem('vagas', JSON.stringify(resultVagas))
 		}
-
+		
 		if (resultVagas && Object.keys(resultVagas).length > 0) {
 			setVagas(resultVagas);
 			setTemVagas(true);
