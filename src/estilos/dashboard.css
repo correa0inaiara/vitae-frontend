@@ -10,6 +10,11 @@
 	font-weight: bold;
 }
 
+.mensagem--center {
+	margin: 0 auto;
+	width: 70%;
+}
+
 .mensagem--big-margin {
 	margin: 40px 0;
 }

@@ -9,6 +9,10 @@
     margin-bottom: 20px;
 }
 
+.detalhe--identificacao {
+	border: 3px solid var(--button-purple-color-border);
+}
+
 .detalhe-item__subitem:not(:last-child),
 .detalhe-item:not(:last-child) {
 	margin-bottom: 15px;
@@ -27,6 +31,11 @@ a.detalhe-item__link {
 a.detalhe-item__link--etapa {
 	margin: 15px 0;
 	display: block;
+}
+
+a.detalhe-item__link--center {
+	display: flex;
+    justify-content: center;
 }
 
 .mensagem {

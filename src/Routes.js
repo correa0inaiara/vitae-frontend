@@ -32,6 +32,8 @@ import ProcessoSeletivoEtapa2 from './components/ProcessoSeletivoEtapa2';
 import ProcessoSeletivoEtapa3 from './components/ProcessoSeletivoEtapa3';
 import CandidaturaDetalhe from './components/CandidaturaDetalhe';
 import Dashboard from './pages/Dashboard';
+import VagaCandidatura from './components/VagaCandidatura';
+import QuestionarioCandidatura from './components/QuestionarioCandidatura';
 
 const MainRoutes = () => (
 	<Routes>
@@ -57,8 +59,16 @@ const MainRoutes = () => (
 				<Route path='/questionarios' element={<Questionarios />} />
 			</Route>
 
+			<Route path='questionarios' element={<ProtectedRoutes role="Candidato" />}>
+				<Route path='/questionarios/:questionarioId' element={<QuestionarioCandidatura />} />
+			</Route>
+
 			<Route path='vagas' element={<ProtectedRoutes role="Empresa" />}>
 				<Route path='/vagas' element={<Vagas />} />
+			</Route>
+
+			<Route path='vagas' element={<ProtectedRoutes role="Candidato" />}>
+				<Route path="/vagas/:vagaId" element={<VagaCandidatura />} />
 			</Route>
 
 			<Route path='processos-seletivos' element={<ProtectedRoutes role="Empresa" />}>

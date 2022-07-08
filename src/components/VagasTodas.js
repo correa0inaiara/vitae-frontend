@@ -78,6 +78,14 @@ const VagasTodas = () => {
 				}
 			} else {
 				setVagas(resultVagas);
+
+				resultVagas.map(async item => {
+					if (item.empresa.usuarioid === user.usuarioId) {
+						item.empresa.vagaDoUsuario = true
+					} else {
+						item.empresa.vagaDoUsuario = false
+					}
+				})
 			}
 			
 			setTemVagas(true);
@@ -116,6 +124,11 @@ const VagasTodas = () => {
 	return (
 		<div className="vagas-todas">
 			<h1 className="title">Todas as Vagas</h1>
+			{
+				usuario.tipoUsuario === 'Empresa' ? (
+					<p className="mensagem">As suas vagas são apresentadas com uma borda em roxo.</p>
+				) : ''
+			}
 			{
 				loading ? (
 					<Loader />

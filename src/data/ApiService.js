@@ -458,10 +458,42 @@ export async function createUserOfferedBenefits(vagaId, beneficioId, token) {
 	}
 }
 
+export async function getVacancyById(vagaId, token) {
+	try {
+		const response = await fetch(`${apiURL}/vagas/${vagaId}`, {
+			method: 'GET',
+			headers: {
+				'Token': `${token}`,
+				'Accept': 'application/json', 'Content-Type': 'application/json'
+			}
+		})
+		return response
+	} catch (error) {
+        console.log("Erro ao realizar requisição: ", error)
+		return error
+	}
+}
+
+export async function getVacancyApplication(vagaId, usuarioId, token) {
+	try {
+		const response = await fetch(
+			`${apiURL}/vagas/${vagaId}?usuarioId=${usuarioId}`, {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
+			}
+		})
+		return response;
+	} catch (error) {
+		console.log('Erro ao realizar requisição: ', error)
+		return error
+	}
+}
+
 export async function getUserVacancies(empresaId, token) {
 	try {
 		const response = await fetch(
-			`${apiURL}/vagas/${empresaId}`, {
+			`${apiURL}/vagas/empresa/${empresaId}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -605,9 +637,25 @@ export async function registerAnsweredQuestions(token, questoesArr) {
 	}
 }
 
-export async function createAnsweredQuestion(questoesId, token, data) {
+export async function getAnsweredQuestions(questionarioId, token) {
 	try {
-		const response = await fetch(`${apiURL}/questoesrespondidas/${questoesId}`, {
+		const response = await fetch(`${apiURL}/questoesrespondidas/questionario/${questionarioId}`, {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
+			}
+		})
+		const json = await response.json();
+		return json;
+	} catch (error) {
+		console.log('Erro ao realizar requisição: ', error)
+		return error
+	}
+}
+
+export async function createAnsweredQuestion(questoesId, token, data, questionarioId) {
+	try {
+		const response = await fetch(`${apiURL}/questoesrespondidas/${questoesId}?questionarioId=${questionarioId}`, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -622,9 +670,9 @@ export async function createAnsweredQuestion(questoesId, token, data) {
 	}
 }
 
-export async function getCompany(usuarioId, token) {
+export async function getCompanyById(empresaId, token) {
 	try {
-		const response = await fetch(`${apiURL}/empresas/${usuarioId}`, {
+		const response = await fetch(`${apiURL}/empresas/${empresaId}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -638,9 +686,48 @@ export async function getCompany(usuarioId, token) {
 	}
 }
 
+export async function getCompany(usuarioId, token) {
+	try {
+		const response = await fetch(`${apiURL}/empresas/usuario/${usuarioId}`, {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
+			}
+		})
+		const json = await response.json();
+		return json;
+	} catch (error) {
+		console.log('Erro ao realizar requisição: ', error)
+		return error
+	}
+}
+
+export async function getQuestionnaireById(questionarioId, token) {
+	try {
+		const response = await fetch(`${apiURL}/questionarios/${questionarioId}`, {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
+			}
+		})
+
+		if (response.ok) {
+			const json = await response.json()
+			return json
+		} else {
+			console.log('Erro na requisição do getQuestionnaireById')
+			return null
+		}
+
+	} catch (error) {
+		console.log('Erro ao realizar requisição: ', error)
+		return error
+	}
+}
+
 export async function getUserQuestionnaires(usuarioId, token) {
 	try {
-		const response = await fetch(`${apiURL}/questionarios/${usuarioId}`, {
+		const response = await fetch(`${apiURL}/questionarios/empresa/${usuarioId}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`

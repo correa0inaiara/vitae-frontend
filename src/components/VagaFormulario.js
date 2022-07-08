@@ -289,26 +289,30 @@ export class VagaFormulario extends Component {
 
 		this.state.status = this.state.status === 'Aberto' ? true : false 
 
+		let tipoContratacaoId = this.state.tipoContratacaoSelecionado
+		let questionarioId = this.state.questionarioSelecionado ? this.state.questionarioSelecionado : null
+
 		const data = {
 			nome: this.state.nome,
 			descricao: this.state.descricao,
 			prazo: this.state.prazo,
 			salario: this.state.salario,
 			localizacao: this.state.localizacao,
-			status: this.state.status,
+			status: this.state.status
 		}
 
 		const beneficiosOferecidos = this.state.beneficiosOferecidos
 		const oldData = this.props.data
 		
-		let tipoContratacaoId = this.state.tipoContratacaoSelecionado
-		let questionarioId = this.state.questionarioSelecionado ? this.state.questionarioSelecionado : '' 
+		
 
 		const token = this.state.user.token
 		const usuarioId = this.state.user.usuarioId
 		
 		
 		if (this.props.edit) {
+			data.tipoContratacaoId = tipoContratacaoId
+			data.questionarioId = questionarioId
 			const vagaId = this.props.data.vagaId
 			this.handleEditSubmit(vagaId, token, data)
 		} else {
