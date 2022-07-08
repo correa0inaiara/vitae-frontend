@@ -73,7 +73,7 @@ const Candidaturas = ({ callback, candidaturasData, usuario, processoSeletivoDat
 									className='detalhe-item__link detalhe-item__link--etapa'
 									to={`/candidaturas/${item.candidaturaid}`}>
 									<button
-										className="button button--green"
+										className="button button--blue"
 										>Ver Detalhes do Candidato</button>
 								</Link>
 							</div>

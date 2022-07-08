@@ -5,6 +5,7 @@ import { getApplicationById } from '../data/ApiService';
 
 const CandidaturaDetalhe = () => {
 
+	const [questoesRespondidas, setQuestoesRespondidas] = useState([]);
 	const [candidatura, setCandidatura] = useState([]);
 	const [usuario, setUsuario] = useState([]);
 	const [candidato, setCandidato] = useState([]);
@@ -37,6 +38,7 @@ const CandidaturaDetalhe = () => {
 					if (candidatura.candidato) {
 						setCandidato(candidatura.candidato)
 					}
+
 					if (candidatura.curriculo) {
 						setCurriculo(candidatura.curriculo)
 						setCursos(candidatura.curriculo.cursos)
@@ -44,6 +46,10 @@ const CandidaturaDetalhe = () => {
 						setExperiencias(candidatura.curriculo.experiencias)
 						setHabilidades(candidatura.curriculo.habilidades)
 						setIdiomas(candidatura.curriculo.idiomas)
+					}
+
+					if (candidatura.questoesRespondidas) {
+						setQuestoesRespondidas(candidatura.questoesRespondidas)
 					}
 		
 				}
@@ -106,7 +112,7 @@ const CandidaturaDetalhe = () => {
 								<p className="detalhe-item__value">{curriculo.nome}</p>
 							</div>
 							<div className="detalhe-item">
-								<p className="subtitle subtitle-subtitem">Educação:</p>
+								<p className="subtitle subtitle-subitem">Educação:</p>
 								{
 									educacao && educacao.length > 0 ? (
 										educacao.map(item =>
@@ -133,7 +139,7 @@ const CandidaturaDetalhe = () => {
 								}
 							</div>
 							<div className="detalhe-item">
-								<p className="subtitle subtitle-subtite">Cursos:</p>
+								<p className="subtitle subtitle-subitem">Cursos:</p>
 								{
 									cursos && cursos.length > 0 ? (
 										cursos.map(item =>
@@ -156,7 +162,7 @@ const CandidaturaDetalhe = () => {
 								}
 							</div>
 							<div className="detalhe-item">
-								<p className="subtitle subtitle-subtite">Experiências:</p>
+								<p className="subtitle subtitle-subitem">Experiências:</p>
 								{
 									experiencias && experiencias.length > 0 ? (
 										experiencias.map(item =>
@@ -187,7 +193,7 @@ const CandidaturaDetalhe = () => {
 								}
 							</div>
 							<div className="detalhe-item">
-								<p className="subtitle subtitle-subtite">Habilidades:</p>
+								<p className="subtitle subtitle-subitem">Habilidades:</p>
 								{
 									habilidades && habilidades.length > 0 ? (
 										habilidades.map(item =>
@@ -206,7 +212,7 @@ const CandidaturaDetalhe = () => {
 								}
 							</div>
 							<div className="detalhe-item">
-								<p className="subtitle subtitle-subtite">Idiomas:</p>
+								<p className="subtitle subtitle-subitem">Idiomas:</p>
 								{
 									idiomas && idiomas.length > 0 ? (
 										idiomas.map(item =>
@@ -224,6 +230,27 @@ const CandidaturaDetalhe = () => {
 									) : <p className="mensagem">Idiomas não cadastrados</p>
 								}
 							</div>
+						</div>
+					) : ''
+				}
+				{
+					questoesRespondidas && questoesRespondidas.length > 0 ? (
+						<div className="detalhe-sobre">
+							<h3 className="subtitle">Sobre o Questionário</h3>
+							{
+								questoesRespondidas.map((item, index) => 
+									<div key={index} className='detalhes'>
+										<div className="detalhe-item">
+											<p className="detalhe-item__label">Questão: </p>
+											<p className="detalhe-item__value">{item.questao}</p>
+										</div>
+										<div className="detalhe-item">
+											<p className="detalhe-item__label">Resposta</p>
+											<p className="detalhe-item__value">{item.resposta}</p>
+										</div>
+									</div>
+								)
+							}
 						</div>
 					) : ''
 				}

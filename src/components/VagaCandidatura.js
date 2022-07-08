@@ -61,8 +61,9 @@ const VagaCandidatura = () => {
 
 	useEffect(() => {
 		async function updateQuestionarioRespondido() {
+			setLoader(true)
 			if (vagaData && usuario && vagaQuestionario) {
-				const questoesRespondidas = await getAnsweredQuestions(vagaData.questionarioid, usuario.token)
+				const questoesRespondidas = await getAnsweredQuestions(vagaData.questionarioid, usuario.usuarioId, usuario.token)
 				const questoes = vagaQuestionario.questoes
 		
 				if (questoes.length === questoesRespondidas.length) {
@@ -81,6 +82,7 @@ const VagaCandidatura = () => {
 					setCurriculos(curriculos)
 				}
 			}
+			setLoader(false)
 		}
 		updateQuestionarioRespondido()
 	}, [vagaData, usuario, vagaQuestionario, candidatura])
@@ -143,21 +145,29 @@ const VagaCandidatura = () => {
 														vagaQuestionario ? (
 															<div className="candidatura-questionarios">
 																{
-																	questionarioRespondido ? (
-																		<p className="mensagem mensagem--verde mensagem--center">Legal, você já respondeu esse questionário. Se quiser ver suas respostas pode clicar no botão abaixo.</p>
+																	loader ? (
+																		<Loader />
 																	) : (
-																		<p className="mensagem">Há um questionário associado à essa vaga que é necessário ser preenchido. Por favor, clique no botão abaixo para respondê-lo, caso contrário, você não poderá se candidatar.</p>
+																		<>
+																			{
+																				questionarioRespondido ? (
+																					<p className="mensagem mensagem--verde mensagem--center">Legal, você já respondeu esse questionário. Se quiser ver suas respostas pode clicar no botão abaixo.</p>
+																				) : (
+																					<p className="mensagem">Há um questionário associado à essa vaga que é necessário ser preenchido. Por favor, clique no botão abaixo para respondê-lo, caso contrário, você não poderá se candidatar.</p>
+																				)
+																			}
+																			<div className="buttons">
+																				<Link
+																					className='detalhe-item__link detalhe-item__link--etapa'
+																					to={`/questionarios/${vagaData.questionarioid}`}>
+																					<button
+																						className="button button--green"
+																						>{`${questionarioRespondido ? 'Ver Questionário' : 'Responder Questionário'}`}</button>
+																				</Link>
+																			</div>
+																		</>
 																	)
 																}
-																<div className="buttons">
-																	<Link
-																		className='detalhe-item__link detalhe-item__link--etapa'
-																		to={`/questionarios/${vagaData.questionarioid}`}>
-																		<button
-																			className="button button--green"
-																			>{`${questionarioRespondido ? 'Ver Questionário' : 'Responder Questionário'}`}</button>
-																	</Link>
-																</div>
 															</div>
 														) : <p className="mensagem">Essa vaga não possui um questionário atribuído.</p>
 													}

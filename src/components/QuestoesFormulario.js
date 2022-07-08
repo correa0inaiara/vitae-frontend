@@ -106,8 +106,8 @@ export class QuestoesFormulario extends Component {
 		})
 	}
 
-	async handleRegisterSubmit(event, questoesId, data, token, questionarioId) {
-		const result = await createAnsweredQuestion(questoesId, token, data, questionarioId)
+	async handleRegisterSubmit(event, questoesId, usuarioId, data, token, questionarioId) {
+		const result = await createAnsweredQuestion(questoesId, usuarioId, token, data, questionarioId)
 		if (result) {
 			this.setState({
 				created: true,
@@ -125,11 +125,12 @@ export class QuestoesFormulario extends Component {
 		const data = {
 			resposta: this.state.resposta
 		}
+		const usuarioId = this.props.usuario.usuarioId
 		const token = this.props.usuario.token
 		const questoesId = this.state.questoesId
 		const questionarioId = this.state.questionarioId
 
-		this.handleRegisterSubmit(event, questoesId, data, token, questionarioId)
+		this.handleRegisterSubmit(event, questoesId, usuarioId, data, token, questionarioId)
 		
 	}
 

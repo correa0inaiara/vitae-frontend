@@ -54,32 +54,28 @@ const QuestionarioCandidatura = () => {
 		getUser()
 	}, [])
 
-	useEffect(() => {
-		async function updateQuestoesRespondidas() {
-			if (questoes && questionario && usuario) {
-				const questoesRespondidas = await getAnsweredQuestions(questionario.questionarioid, usuario.token)
-				if (questoes.length === questoesRespondidas.length) {
-					setQuestionarioRespondido(true)
-					setQuestoesRespondidas(questoesRespondidas)
-				} else {
-					setQuestionarioRespondido(false)
-					setQuestoesRespondidas([])
-				}
+	const updateQuestoesRespondidas = async function () {
+		if (questoes && questionario && usuario) {
+			const questoesRespondidas = await getAnsweredQuestions(questionario.questionarioid, usuario.usuarioId, usuario.token)
+			if (questoes.length === questoesRespondidas.length) {
+				setQuestionarioRespondido(true)
+				setQuestoesRespondidas(questoesRespondidas)
+			} else {
+				setQuestionarioRespondido(false)
+				setQuestoesRespondidas([])
 			}
 		}
-		updateQuestoesRespondidas()
+	}
+
+	useEffect(() => {
+		async function getQuestoesRespondidas() {
+			updateQuestoesRespondidas()	
+		}
+		getQuestoesRespondidas()
 	}, [questoes, questionario, usuario])
 
 	const handleQuestoesRespondidas = async function () {
-		const questoesRespondidas = await getAnsweredQuestions(questionario.questionarioid, usuario.token)
-
-		if (questoes.length === questoesRespondidas.length) {
-			setQuestionarioRespondido(true)
-			setQuestoesRespondidas(questoesRespondidas)
-		} else {
-			setQuestionarioRespondido(false)
-			setQuestoesRespondidas([])
-		}
+		updateQuestoesRespondidas()
 	}
 	
 	return (
@@ -88,7 +84,6 @@ const QuestionarioCandidatura = () => {
 				className='detalhe-item__link detalhe-item__link--center'
 				to={`/vagas/${vagaId ? vagaId : 'todas'}`}>
 				<button
-					disabled={!questionarioRespondido}
 					className="button button--grey"
 					>Voltar para Candidatura da Vaga</button>
 			</Link>

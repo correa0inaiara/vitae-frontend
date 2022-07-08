@@ -54,6 +54,7 @@ a.detalhe-item__link--center {
 
 .detalhe-item__subitem-label,
 .detalhe-item__label {
+	font-weight: bold;
 	margin-bottom: 5px;
 }
 

@@ -637,9 +637,9 @@ export async function registerAnsweredQuestions(token, questoesArr) {
 	}
 }
 
-export async function getAnsweredQuestions(questionarioId, token) {
+export async function getAnsweredQuestions(questionarioId, usuarioId, token) {
 	try {
-		const response = await fetch(`${apiURL}/questoesrespondidas/questionario/${questionarioId}`, {
+		const response = await fetch(`${apiURL}/questoesrespondidas/questionario/${questionarioId}?usuarioId=${usuarioId}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -653,9 +653,9 @@ export async function getAnsweredQuestions(questionarioId, token) {
 	}
 }
 
-export async function createAnsweredQuestion(questoesId, token, data, questionarioId) {
+export async function createAnsweredQuestion(questoesId, usuarioId, token, data, questionarioId) {
 	try {
-		const response = await fetch(`${apiURL}/questoesrespondidas/${questoesId}?questionarioId=${questionarioId}`, {
+		const response = await fetch(`${apiURL}/questoesrespondidas/${questoesId}?questionarioId=${questionarioId}&usuarioId=${usuarioId}`, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
