@@ -5,7 +5,7 @@ Repositório do Front-end do meu Projeto de TCC da Especialização em Desenvolv
 Projeto Vitae - Sistemas de Vagas
 
 ## Tecnologias
-Esse projeto foi desenvolvido com React e CSS.
+Esse projeto foi desenvolvido com Design Responsivo construído com React e CSS.
 
 ### Estrutura do Projeto
 ```
