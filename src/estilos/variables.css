@@ -6,8 +6,8 @@
 	--background-quaternary-color: #F04242;
 	--background-dark-quaternary-color: #d13a3a;
 	--background-box-shadow-color: #939393;
-	--button-primary-color: #7AF2A3;
-	--button-secondary-color: #65c486;
+	--button-primary-color: #2A9D8F;
+	--button-secondary-color: #264653;
 	--button-terciary-color: #898989;;
 	--button-purple-color: #B371F4;
 	--button-purple-color-border: #9d64d6;
@@ -16,6 +16,7 @@
 	--button-dark-blue-color: #668bd4;
 	--button-darker-blue-color: #09307b;
 	--button-blue-color: #7EA4EF;
+	--text-orange-color: #E76F51;
 }
 
 /* Fontes */

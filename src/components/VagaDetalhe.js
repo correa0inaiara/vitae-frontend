@@ -78,7 +78,7 @@ const VagaDetalhe = ({
 	return (
 		<div className={`detalhe ${vagaEmpresa.vagaDoUsuario ? 'detalhe--identificacao' : ''}`}>
 			{
-				usuario.tipoUsuario === 'Candidato' ? (
+				usuario.roleUsuario === 'Candidato' ? (
 					<div className="detalhes-empresa">
 						<h3 className="detalhes-empresa__title">Sobre a Empresa</h3>
 						<div className="detalhe-item">
@@ -160,7 +160,7 @@ const VagaDetalhe = ({
 				}
 			</div>
 			{
-				usuario.tipoUsuario === 'Candidato' ? (
+				usuario.roleUsuario === 'Candidato' ? (
 					<div className="buttons">
 						<Link
 							className='detalhe-item__link detalhe-item__link--etapa'

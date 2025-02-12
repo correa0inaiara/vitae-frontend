@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
 	const [usuario, setUsuario] = useState();
-	const [tipoUsuario, setTipoUsuario] = useState();
+	const [roleUsuario, setroleUsuario] = useState();
 
 	useEffect(() => {
 		async function getUser() {
@@ -15,8 +15,8 @@ const Dashboard = () => {
 			if (_user) {
 				user = JSON.parse(_user)
 				setUsuario(user)
-				const tipoUsuario = user.tipoUsuario
-				setTipoUsuario(tipoUsuario)
+				const roleUsuario = user.roleUsuario
+				setroleUsuario(roleUsuario)
 
 				return user
 			} else {
@@ -33,24 +33,24 @@ const Dashboard = () => {
 		 - vagas
 		 - processos seletivos
 		  - selecao de candidatos
-		  - agendamentos
+		  - entrevistas
 		 - todas as vagas
 		candidato:
 		 - curriculos
-		 - visualizar agendamentos
+		 - visualizar entrevistas
 		 - todas as vagas
 	*/
 
 	return (
 		<div className="dashboard">
 			<h1 className="title">{
-				`Olá, ${tipoUsuario === 'Candidato' ? 'candidato' : 'empresa'}!`
+				`Olá, ${roleUsuario === 'Candidato' ? 'candidato' : 'empresa'}!`
 			}</h1>
 			<h2 className="subtitle subtitle--center">Conheça um pouco mais dos nossos serviços</h2>
 			<ul className="dashboard-list">
 				<p className="mensagem mensagem--big-margin">Abaixo você encontra uma breve explicação do que esperar de cada página</p>
 				{
-					tipoUsuario === 'Candidato' ? (
+					roleUsuario === 'Candidato' ? (
 						<>
 							<li className="dashboard-list__item">
 								<p className="mensagem">Na página de currículos você poderá cadastrar quantos currículos quiser, e ao se candidatar à alguma vaga poderá escolher qual deles enviar.</p>
@@ -67,10 +67,10 @@ const Dashboard = () => {
 								<p className="mensagem">Após se candidatar, as empresas receberam a sua candidatura e os detalhes do currículo que você enviou. Após o final do processo seletivo, se você for escolhido, a empresa poderá agendar uma entrevista com você. Cheque nesse link quando quiser saber se foi escolhido ou não.</p>
 								<div className="buttons">
 									<Link 
-										to='/agendamentos'>
+										to='/entrevistas'>
 										<button
 											className="button button--blue"
-											>Agendamentos</button>
+											>Entrevistas</button>
 									</Link>
 								</div>
 							</li>
@@ -122,13 +122,13 @@ const Dashboard = () => {
 								</div>
 							</li>
 							<li className="dashboard-list__item">
-								<p className="mensagem">Após as etapas do processo seletivo, os agendamentos aparecerão nessa tela.</p>
+								<p className="mensagem">Após as etapas do processo seletivo, os entrevistas aparecerão nessa tela.</p>
 								<div className="buttons">
 									<Link 
-										to='/agendamentos'>
+										to='/entrevistas'>
 										<button
 											className="button button--blue"
-											>Agendamentos</button>
+											>Entrevistas</button>
 									</Link>
 								</div>
 							</li>

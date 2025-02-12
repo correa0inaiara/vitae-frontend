@@ -208,7 +208,7 @@ class CadastroCandidato extends React.Component {
 								const user = {
 									token: loginResult.token,
 									usuarioId: loginResult.usuarioId,
-									tipoUsuario: loginResult.tipoUsuario,
+									roleUsuario: loginResult.roleUsuario,
 									loginSocialToken: _user.loginSocialToken
 								} 
 								localStorage.setItem("user", JSON.stringify(user))
@@ -237,7 +237,7 @@ class CadastroCandidato extends React.Component {
 							const user = {
 								token: loginResult.token,
 								usuarioId: loginResult.usuarioId,
-								tipoUsuario: loginResult.tipoUsuario
+								roleUsuario: loginResult.roleUsuario
 							} 
 							localStorage.setItem("user", JSON.stringify(user))
 							this.props.redirect()
@@ -825,7 +825,7 @@ class CadastroCandidato extends React.Component {
 						} 
 						type="submit" 
 						className="button">
-						Me cadastre
+						Me cadastrar
 					</button>
 				</div>
 			</form>

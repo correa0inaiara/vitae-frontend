@@ -8,7 +8,7 @@ import './estilos/main.css';
 import './estilos/cadastro.css';
 import './estilos/cadastroFormulario.css';
 import './estilos/button.css';
-import './estilos/agendamentos.css';
+import './estilos/entrevistas.css';
 import './estilos/curriculo.css';
 import './estilos/questionarios.css';
 import './estilos/acessoNegado.css';

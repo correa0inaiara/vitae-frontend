@@ -15,7 +15,7 @@ import './estilos/shape.css';
 import Login from './components/Login';
 import Cadastro from './components/Cadastro';
 import Curriculos from './components/Curriculos';
-import Agendamentos from './components/Agendamentos';
+import Entrevistas from './components/Entrevistas';
 import {ProtectedRoutes} from './components/ProtectedRoutes';
 
 import Home from './pages/Home';
@@ -53,7 +53,7 @@ const MainRoutes = () => (
 				<Route path='/curriculos' element={<Curriculos />} />
 			</Route>
 	
-			<Route path='agendamentos' element={<Agendamentos />} />
+			<Route path='entrevistas' element={<Entrevistas />} />
 			
 			<Route path='questionarios' element={<ProtectedRoutes role="Empresa" />}>
 				<Route path='/questionarios' element={<Questionarios />} />

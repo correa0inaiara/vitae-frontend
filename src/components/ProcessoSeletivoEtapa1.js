@@ -43,7 +43,7 @@ const ProcessoSeletivoEtapa1 = () => {
 
 		setUsuario({
 			usuarioId: user.usuarioId,
-			tipoUsuario: user.tipoUsuario,
+			roleUsuario: user.roleUsuario,
 			token: user.token
 		})
 
@@ -59,7 +59,7 @@ const ProcessoSeletivoEtapa1 = () => {
 			setLoading(false)
 		}
 
-		const tipoUsuario = user.tipoUsuario;
+		const roleUsuario = user.roleUsuario;
 		return resultCandidaturas
 	}
 

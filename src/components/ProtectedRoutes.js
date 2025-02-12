@@ -8,7 +8,7 @@ export const ProtectedRoutes = (props) => {
 			const _user = JSON.parse(user)
 			return {
 				auth: true,
-				role: _user.tipoUsuario
+				role: _user.roleUsuario
 			}
 		} else {
 			return {

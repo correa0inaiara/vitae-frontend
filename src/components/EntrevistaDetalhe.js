@@ -1,14 +1,14 @@
 import React from 'react'
 
-const AgendamentoDetalhe = ({data, index, usuario}) => {
+const EntrevistaDetalhe = ({data, index, usuario}) => {
 	return (
-		<div key={index} className="detalhes-agendamento">
+		<div key={index} className="detalhes-entrevista">
 			<div className="detalhe-item">
 				<span className="detalhe-item__label">Motivo:</span>
 				<span className="detalhe-item__value">{data.motivo}</span>
 			</div>
 			{
-				usuario.tipoUsuario === 'Candidato' ? (
+				usuario.roleUsuario === 'Candidato' ? (
 					<div className="detalhe-item">
 						<span className="detalhe-item__label">Empresa:</span>
 						<span className="detalhe-item__value">{data.nomedaempresa}</span>
@@ -36,4 +36,4 @@ const AgendamentoDetalhe = ({data, index, usuario}) => {
 	)
 }
 
-export default AgendamentoDetalhe
+export default EntrevistaDetalhe

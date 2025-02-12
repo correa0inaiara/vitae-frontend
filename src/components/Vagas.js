@@ -52,7 +52,7 @@ const Vagas = () => {
 			setMessage(mensagem)
 		}
 
-		const tipoUsuario = user.tipoUsuario;
+		const roleUsuario = user.roleUsuario;
 		return resultVagas
 	}
 

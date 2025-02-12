@@ -6,7 +6,7 @@
 }
 
 .title {
-	color: var(--background-secondary-color);
+	color: var(--text-orange-color);
 	font-size: 30px;
 	margin-bottom: 20px;
 }
@@ -16,7 +16,7 @@
 	text-align: center;
 	line-height: 1.2;
 	margin: 20px;
-	color: var(--background-terciary-color);
+	color: var(--text-orange-color);
 }
 
 .toggle-tipo-usuario {
@@ -26,8 +26,13 @@
 	margin: 20px 0;
 }
 
+.toggle-item {
+	color: var(--text-orange-color);
+}
+
 .toggle-item.active {
 	font-weight: bold;
+	color: var(--button-secondary-color);
 }
 
 hr {
@@ -35,7 +40,7 @@ hr {
 	clear:both;
 	display:block;
 	width: 100%;               
-	background-color: var(--background-box-shadow-color);
+	background-color: var(--text-orange-color);
 	height: 1.5px;
 }
 

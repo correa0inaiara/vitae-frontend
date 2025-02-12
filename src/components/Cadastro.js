@@ -10,7 +10,7 @@ const redirect = function (event, navigate) {
 
 const Cadastro = () => {
 	const navigate = useNavigate()
-	const [tipoUsuario, setTipoUsuario] = useState('Empresa');
+	const [roleUsuario, setroleUsuario] = useState('Empresa');
 
 	return (
 		<div className="cadastro">
@@ -21,17 +21,17 @@ const Cadastro = () => {
 
 			<div className="toggle-tipo-usuario">
 				<a
-					className={`toggle-item ${tipoUsuario === 'Empresa' ? 'active' : ''}`}
-					onClick={() => setTipoUsuario('Empresa')}
+					className={`toggle-item ${roleUsuario === 'Empresa' ? 'active' : ''}`}
+					onClick={() => setroleUsuario('Empresa')}
 				>Sou uma Empresa</a>
 				<hr />
 				<a
-					className={`toggle-item ${tipoUsuario === 'Candidato' ? 'active' : ''}`}
-					onClick={() => setTipoUsuario('Candidato')}
+					className={`toggle-item ${roleUsuario === 'Candidato' ? 'active' : ''}`}
+					onClick={() => setroleUsuario('Candidato')}
 				>Sou um (a) Candidato (a)</a>
 			</div>
 
-			{tipoUsuario === 'Empresa' ?
+			{roleUsuario === 'Empresa' ?
 				<CadastroEmpresa redirect={redirect.bind(this, navigate)} /> :
 				<CadastroCandidato redirect={redirect.bind(this, navigate)} />}
 

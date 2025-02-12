@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteSchedule, getCSVExport, getScheduleBySelectionProcess } from '../data/ApiService';
 import Loader from './Loader';
-import AgendamentoFormulario from './AgendamentoFormulario'
+import EntrevistaFormulario from './EntrevistaFormulario'
 import { Link } from 'react-router-dom';
 
 const ProcessoSeletivoEtapa2 = () => {
@@ -9,16 +9,16 @@ const ProcessoSeletivoEtapa2 = () => {
 	const [candidaturas, setCandidaturas] = useState([]);
 	const [usuario, setUsuario] = useState('');
 	const [message, setMessage] = useState();
-	const [temAgendamentos, setTemAgendamentos] = useState(false);
+	const [temEntrevistas, setTemEntrevistas] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [processoSeletivoData, setProcessoSeletivoData] = useState()
-	const [agendamentos, setAgendamentos] = useState(false);
+	const [entrevistas, setEntrevistas] = useState(false);
 	const [edit, setEdit] = useState(false)
 	const [editData, setEditData] = useState([])
 
 	const updateList = async function () {
-		setTemAgendamentos(false)
-		setAgendamentos([])
+		setTemEntrevistas(false)
+		setEntrevistas([])
 		setEdit(false)
 		setEditData([])
 		await getList(usuario)
@@ -28,35 +28,35 @@ const ProcessoSeletivoEtapa2 = () => {
 		setUsuario(user)
 		setLoading(true)
 
-		let resultAgendamentos = []
+		let resultEntrevistas = []
 		const _processoSeletivo = localStorage.getItem("processoSeletivoData")
 		let resultProcessoSeletivo = []
 		if (_processoSeletivo) {
 			resultProcessoSeletivo = JSON.parse(_processoSeletivo)
 			setProcessoSeletivoData(resultProcessoSeletivo)
 
-			resultAgendamentos = await getScheduleBySelectionProcess(resultProcessoSeletivo.processoseletivoid, user.token)
+			resultEntrevistas = await getScheduleBySelectionProcess(resultProcessoSeletivo.processoseletivoid, user.token)
 		}
 
 		setUsuario({
 			usuarioId: user.usuarioId,
-			tipoUsuario: user.tipoUsuario,
+			roleUsuario: user.roleUsuario,
 			token: user.token
 		})
 
-		if (resultAgendamentos && Object.keys(resultAgendamentos).length > 0) {
-			setAgendamentos(resultAgendamentos);
-			setTemAgendamentos(true);
+		if (resultEntrevistas && Object.keys(resultEntrevistas).length > 0) {
+			setEntrevistas(resultEntrevistas);
+			setTemEntrevistas(true);
 			setLoading(false)
 		} else {
-			setAgendamentos([])
-			setTemAgendamentos(false);
-			const mensagem = 'Não há agendamentos para esse processo seletivo.'
+			setEntrevistas([])
+			setTemEntrevistas(false);
+			const mensagem = 'Não há entrevistas para esse processo seletivo.'
 			setMessage(mensagem)
 			setLoading(false)
 		}
 
-		return resultAgendamentos
+		return resultEntrevistas
 	}
 
 	useEffect(() => {
@@ -78,29 +78,29 @@ const ProcessoSeletivoEtapa2 = () => {
 		getUser()
 	}, [])
 
-	const handleDelete = async function (agendamento) {
-		const result = await deleteSchedule(agendamento.agendamentoid, usuario.token)
+	const handleDelete = async function (entrevista) {
+		const result = await deleteSchedule(entrevista.entrevistaid, usuario.token)
 		updateList()
 	}
 
-	const handleEdit = function (agendamento) {
+	const handleEdit = function (entrevista) {
 		setEdit(true)
 		const data = {
-			motivo: agendamento.motivo,
-			dia: agendamento.dia,
-			hora: agendamento.hora,
-			localizacao: agendamento.localizacao,
-			candidatoSelecionadoId: agendamento.candidatoselecionadoid,
-			nomeCandidato: agendamento.nomecandidato,
-			processoSeletivoId: agendamento.processoseletivoid,
-			agendamentoId: agendamento.agendamentoid
+			motivo: entrevista.motivo,
+			dia: entrevista.dia,
+			hora: entrevista.hora,
+			localizacao: entrevista.localizacao,
+			candidatoSelecionadoId: entrevista.candidatoselecionadoid,
+			nomeCandidato: entrevista.nomecandidato,
+			processoSeletivoId: entrevista.processoseletivoid,
+			entrevistaId: entrevista.entrevistaid
 		}
 		setEditData(data)
 	}
 
 	const handleExport = async function (item) {
-		const filename = `agendamentos-${item.agendamentoid}.csv`
-		const result = await getCSVExport('agendamentos', item.agendamentoid, filename, usuario.token)
+		const filename = `entrevistas-${item.entrevistaid}.csv`
+		const result = await getCSVExport('entrevistas', item.entrevistaid, filename, usuario.token)
 	}
 
 	return (
@@ -115,17 +115,17 @@ const ProcessoSeletivoEtapa2 = () => {
 				</Link>
 			</div>
 			<h1 className="title">Processo Seletivo</h1>
-			<h2 className="subtitle subtitle-etapa">ETAPA 2: Agendamentos</h2>
+			<h2 className="subtitle subtitle-etapa">ETAPA 2: Entrevistas</h2>
 
-			<AgendamentoFormulario edit={edit} callback={updateList} data={processoSeletivoData} usuario={usuario} />
+			<EntrevistaFormulario edit={edit} callback={updateList} data={processoSeletivoData} usuario={usuario} />
 			<div className="lista">
 				{
 					loading ? (
 						<Loader />
 					) : (
-						temAgendamentos ? (
-							agendamentos.map((item, index) =>
-								<div key={index} className='detalhes-agendamento'>
+						temEntrevistas ? (
+							entrevistas.map((item, index) =>
+								<div key={index} className='detalhes-entrevista'>
 									<div className="detalhes">
 										<div className="detalhe-item">
 											<p className="detalhe-item__label">Motivo</p>
@@ -170,7 +170,7 @@ const ProcessoSeletivoEtapa2 = () => {
 									</div>
 									{
 										edit ? (
-											<AgendamentoFormulario edit={edit} callback={updateList} data={editData} usuario={usuario} />
+											<EntrevistaFormulario edit={edit} callback={updateList} data={editData} usuario={usuario} />
 										) : ''
 									}
 								</div>

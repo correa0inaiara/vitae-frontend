@@ -11,11 +11,13 @@
 	color: var(--background-secondary-color);
 	font-family: 'OpenSans', sans-serif;
 	font-size: 13px;
+	width: 100%;
 }
 
 .button {
 	background-color: var(--background-secondary-color);
 	color: var(--background-primary-color);
+	box-shadow: 0px 3px 2px 2px var(--background-box-shadow-color);
 	font-family: 'OpenSans', sans-serif;
 	border-radius: 10px;
 	padding: 7px 20px;
@@ -25,37 +27,46 @@
 	margin: 0 0 20px 0;
 	width: 100%;
 	font-size: 15px;
-	min-width: 230px;
-    max-width: 230px;
+	min-width: 100%;
+  max-width: 230px;
+	height: 35px;
 }
 
 .button[disabled] {
 	border: 1px solid var(--background-terciary-color);
 	background-color: var(--background-terciary-color);
 	color: var(--background-box-shadow-color);
+	box-shadow: 0px 3px 2px 2px var(--background-box-shadow-color);
 }
 
 .button[disabled]:hover {
 	border: 1px solid var(--background-terciary-color);
 	background-color: var(--background-terciary-color);
 	color: var(--background-box-shadow-color);	
+	box-shadow: 0px 3px 2px 2px var(--background-box-shadow-color);
 }
 
 .button:hover {
 	border: 1px solid var(--background-secondary-color);
 	background-color: var(--background-primary-color);
 	color: var(--background-secondary-color);
+	box-shadow: 0px 3px 2px 2px var(--background-secondary-color);
 }
 
 .button--green {
-	border: 2px solid var(--button-secondary-color);
+	/* border: 2px solid var(--button-secondary-color); */
+	border: none;
+	/* color: var(--button-secondary-color); */
 	background-color: var(--button-primary-color);
 	box-shadow: 0px 3px 2px 2px var(--button-secondary-color);
 }
 
 .button--green:hover {
-	border: 2px solid var(--button-secondary-color);
-	color: var(--button-secondary-color);
+	/* border: 2px solid var(--button-primary-color); */
+	border: none;
+	color: var(--background-primary-color);
+	background-color: var(--button-secondary-color);
+	box-shadow: 0px 3px 2px 2px var(--button-primary-color);
 }
 
 .button--blue {
@@ -116,6 +127,10 @@
 	.buttons {
 		margin: 25px auto 0;
 		flex-direction: row;
+	}
+
+	.button {
+		min-width: 230px;
 	}
 
 	.button:not(:last-child) {

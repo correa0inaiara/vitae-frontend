@@ -27,7 +27,7 @@ const Curriculos = () => {
 
 		setUsuario({
 			usuarioId: user.usuarioId,
-			tipoUsuario: user.tipoUsuario,
+			roleUsuario: user.roleUsuario,
 			token: user.token
 		})
 

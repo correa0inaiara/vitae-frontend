@@ -26,7 +26,7 @@ const SocialLogin = ({page}) => {
 				const user = {
 					token: json.token,
 					usuarioId: json.usuarioId,
-					tipoUsuario: json.tipoUsuario,
+					roleUsuario: json.roleUsuario,
 					loginSocialToken: decoded
 				}
 	
@@ -56,7 +56,7 @@ const SocialLogin = ({page}) => {
 			const user = {
 				token: null,
 				usuarioId: null,
-				tipoUsuario: null,
+				roleUsuario: null,
 				loginSocialToken: decoded
 			}
 	

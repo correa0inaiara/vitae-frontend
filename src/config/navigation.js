@@ -12,9 +12,9 @@ export const navigationItems = {
 			role: 'Candidato'
 		},
 		{
-			name: 'Visualizar Agendamentos ',
-			to: '/agendamentos',
-			text: 'agendamentos'
+			name: 'Visualizar Entrevistas ',
+			to: '/entrevistas',
+			text: 'entrevistas'
 		},
 		{
 			name: 'Questionários ',

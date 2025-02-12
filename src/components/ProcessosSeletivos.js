@@ -33,7 +33,7 @@ const ProcessosSeletivos = () => {
 
 		setUsuario({
 			usuarioId: user.usuarioId,
-			tipoUsuario: user.tipoUsuario,
+			roleUsuario: user.roleUsuario,
 			token: user.token
 		})
 
@@ -49,7 +49,7 @@ const ProcessosSeletivos = () => {
 			setLoading(false)
 		}
 
-		const tipoUsuario = user.tipoUsuario;
+		const roleUsuario = user.roleUsuario;
 		return resultProcessosSeletivos
 	}
 

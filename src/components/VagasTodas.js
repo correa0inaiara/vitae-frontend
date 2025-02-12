@@ -41,14 +41,14 @@ const VagasTodas = () => {
 
 		setUsuario({
 			usuarioId: user.usuarioId,
-			tipoUsuario: user.tipoUsuario,
+			roleUsuario: user.roleUsuario,
 			token: user.token
 		})
 
 		if (resultVagas && Object.keys(resultVagas).length > 0) {
 
 
-			if (user.tipoUsuario === 'Candidato') {
+			if (user.roleUsuario === 'Candidato') {
 
 				const _curriculos = localStorage.getItem("curriculos")
 				let resultCurriculos = []
@@ -98,7 +98,7 @@ const VagasTodas = () => {
 			setLoading(false)
 		}
 
-		const tipoUsuario = user.tipoUsuario;
+		const roleUsuario = user.roleUsuario;
 		return resultVagas
 	}
 
@@ -125,7 +125,7 @@ const VagasTodas = () => {
 		<div className="vagas-todas">
 			<h1 className="title">Todas as Vagas</h1>
 			{
-				usuario.tipoUsuario === 'Empresa' ? (
+				usuario.roleUsuario === 'Empresa' ? (
 					<p className="mensagem">As suas vagas são apresentadas com uma borda em roxo.</p>
 				) : ''
 			}

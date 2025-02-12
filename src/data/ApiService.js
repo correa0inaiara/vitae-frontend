@@ -25,7 +25,7 @@ export async function getItem() {
 	}
 }
 
-/* AGENDAMENTOS */
+/* ENTREVISTAS */
 
 export async function getSchedule(usuarioId, token) {
 	const result = await getScheduleByUser(usuarioId, token)
@@ -67,7 +67,7 @@ export async function downloadCSV(filename, text) {
 
 export async function getScheduleBySelectionProcess(processoSeletivoId, token) {
 	try {
-		const response = await fetch(`${apiURL}/agendamentos/${processoSeletivoId}`, {
+		const response = await fetch(`${apiURL}/entrevistas/${processoSeletivoId}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -83,7 +83,7 @@ export async function getScheduleBySelectionProcess(processoSeletivoId, token) {
 
 export async function getScheduleByUser(usuarioId, token) {
 	try {
-		const response = await fetch(`${apiURL}/agendamentos/usuario/${usuarioId}`, {
+		const response = await fetch(`${apiURL}/entrevistas/usuario/${usuarioId}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -100,7 +100,7 @@ export async function getScheduleByUser(usuarioId, token) {
 export async function createSchedule(processoSeletivoId, candidatoSelecionadoId, token, data) {
 	try {
 		const response = await fetch(`
-			${apiURL}/agendamentos/${processoSeletivoId}?candidatoSelecionadoId=${candidatoSelecionadoId}`, {
+			${apiURL}/entrevistas/${processoSeletivoId}?candidatoSelecionadoId=${candidatoSelecionadoId}`, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -115,10 +115,10 @@ export async function createSchedule(processoSeletivoId, candidatoSelecionadoId,
 	}
 }
 
-export async function editSchedule(agendamentoId, token, data) {
+export async function editSchedule(entrevistaId, token, data) {
 	try {
 		const response = await fetch(`
-			${apiURL}/agendamentos/${agendamentoId}`, {
+			${apiURL}/entrevistas/${entrevistaId}`, {
 			method: 'PUT',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -133,10 +133,10 @@ export async function editSchedule(agendamentoId, token, data) {
 	}
 }
 
-export async function deleteSchedule(agendamentoId, token) {
+export async function deleteSchedule(entrevistaId, token) {
 	try {
 		const response = await fetch(`
-			${apiURL}/agendamentos/${agendamentoId}`, {
+			${apiURL}/entrevistas/${entrevistaId}`, {
 			method: 'DELETE',
 			headers: {
 				'Accept': 'application/json', 'Content-Type': 'application/json', 'Token': `${token}`
@@ -958,18 +958,18 @@ export async function createSocialNetwork(usuarioId, redesSociais) {
 	}
 }
 
-export async function registerUser(data, tipoUsuario) {
+export async function registerUser(data, roleUsuario) {
 	try {
 		const usuario = {
 			email: data.email,
 			senha: data.senha,
-			tipoUsuario: tipoUsuario,
+			roleUsuario: roleUsuario,
 			loginSocial: data.logadoComGoogle
 		}
 
 		let empresa = ''
 		let candidato = ''
-		if (tipoUsuario === 'Candidato') {
+		if (roleUsuario === 'Candidato') {
 			candidato = {
 				nomeCompleto: data.nomeCandidato,
 				cpf: data.cpf,

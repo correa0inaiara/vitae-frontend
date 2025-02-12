@@ -43,7 +43,7 @@ const Relatorios = () => {
 
 	const setGrafico1 = function (relatorioData) {
 
-		const labels = ['Candidatos', 'Empresas', 'Administrador']
+		const labels = ['Candidatos', 'Empresas', 'Administradores']
 		const data = {
 			labels,
 			datasets: [
@@ -59,30 +59,90 @@ const Relatorios = () => {
 	}
 
 	const setGrafico2 = function (relatorioData) {
+		console.log("relatorioData", relatorioData)
 		const idiomas = relatorioData
 		let idiomasArr = []
+		
+		idiomas.filter((item, index) => idiomasArr.push(item.idioma))
+		const labels = idiomasArr.filter((item, pos) => idiomasArr.indexOf(item) === pos)
+		console.log('idiomas', idiomas)
+		console.log('labels', labels)
+
 		let basico = []
 		let intermediario = []
 		let avancado = []
+		let sums = []
 
-		idiomas.filter((item, index) => idiomasArr.push(item.idioma))
-		const labels = idiomasArr.filter((item, pos) => idiomasArr.indexOf(item) === pos)
 
-		for (var i = 0; i<idiomas.length; i++) {
-			for (var j = 0; j<labels.length; j++) {
-				if (labels[j] == idiomas[i].idioma) {
-					if (idiomas[i].nivel === 'Básico') {
-						basico.push(idiomas[i].count)
-					}
-					if (idiomas[i].nivel === 'Intermediário') {
-						intermediario.push(idiomas[i].count)
-					}
-					if (idiomas[i].nivel === 'Avançado') {
-						avancado.push(idiomas[i].count)
-					}
-				}
-			}
-		}
+
+		// var arr = [{x:1}, {x:2}, {x:4}];
+		// var result = arr.reduce(function (acc, obj) { return acc + obj.x; }, 0);
+		// console.log(result);  // 7
+		// basico = idiomas.reduce(function (acc, obj) { return acc + obj.basico; }, 0);
+		// intermediario = idiomas.reduce(function (acc, obj) { return acc + obj.intermediario; }, 0);
+		// avancado = idiomas.reduce(function (acc, obj) { return acc + obj.avancado; }, 0);
+		// console.log(result);
+
+		// let test = Object.keys(idiomas).reduce(function (previous, key) {
+		// 	console.log("key", key)
+		// 	console.log("previous", previous)
+		// 	previous.basico += idiomas[key].basico;
+		// 	previous.intermediario += idiomas[key].intermediario;
+		// 	previous.avancado += idiomas[key].avancado;
+		// 	sums = previous
+		// 	return previous
+		// }, sums);
+
+		/**
+		 * Alemão
+		 * Espanhol
+		 * Francês
+		 * Inglês
+		 */
+
+		// let idiomasFiltrados = {
+		// 	basico: 0,
+		// 	intermediario: 0,
+		// 	avancado: 0
+		// }
+		
+		// let test = Object.keys(idiomas).reduce(function (previous, key) {
+			// let count = idiomas[key].idioma == 'Alemão'
+			// previous.count += idiomas[key].count;
+			// return previous
+		// }, {key: '', count: 0});
+
+		// console.log('test', test)
+
+		// for (var i = 0; i<idiomas.length; i++) {
+		// 	for (var j = 0; j<labels.length; j++) {
+		// 		if (labels[j] == idiomas[i].idioma) {
+		// 			var findIndex = labels[i].find()
+
+					// if (idiomas[i].nivel === 'Básico') {
+					// 	basico.push(idiomas[i].count)
+					// } else {
+					// 	basico.push(0)
+					// 	if (idiomas[i].nivel === 'Intermediário') {
+					// 		intermediario.push(idiomas[i].count)
+					// 	} else {
+					// 		intermediario.push(0)
+					// 		if (idiomas[i].nivel === 'Avançado') {
+					// 			avancado.push(idiomas[i].count)
+					// 		} else {
+					// 			avancado.push(0)
+					// 		}
+					// 	}
+					// }
+					
+					
+		// 		}
+		// 	}
+		// }
+
+		console.log('basico', basico)
+		console.log('intermediario', intermediario)
+		console.log('avancado', avancado)
 
 		const data = {
 			labels,
@@ -110,7 +170,7 @@ const Relatorios = () => {
 
 	const setGrafico3 = function (relatorioData) {
 		const data = {
-			labels: ['Agendamentos', 'Currículos', 'Processos Seletivos', 'Questionários', 'Vagas'],
+			labels: ['Entrevistas', 'Currículos', 'Processos Seletivos', 'Questionários', 'Vagas'],
 			datasets: [
 				{
 					label: 'Total',
@@ -208,8 +268,8 @@ const Relatorios = () => {
 				// idiomas por nível
 				setGrafico2(result.totalIdiomasPorNivel)
 
-				// curriculos, questionarios, vagas, processos seletivos e agendamentos
-				setGrafico3(result.totalCurriculosQuestionariosVagasProcessosSeletivosAgendamentos)
+				// curriculos, questionarios, vagas, processos seletivos e entrevistas
+				setGrafico3(result.totalCurriculosQuestionariosVagasProcessosSeletivosEntrevistas)
 
 				// educacao, cursos, experiencias, habilidades e idiomas
 				setGrafico4(result.totalEducacaoCursosExperienciasHabilidadesIdiomas)

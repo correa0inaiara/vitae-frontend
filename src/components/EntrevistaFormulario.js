@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { createSchedule, editSchedule, getSelectedCandidates } from '../data/ApiService';
 
-export class AgendamentoFormulario extends Component {
+export class EntrevistaFormulario extends Component {
 	constructor(props) {
 		super(props)
 
@@ -66,8 +66,8 @@ export class AgendamentoFormulario extends Component {
 					- lista das candidaturas
 						- aqui seleciono os candidatos
 				- etapa 2:
-					- agendamento
-						- aqui realizo os agendamentos para os candidatos selecionados
+					- entrevista
+						- aqui realizo os entrevistas para os candidatos selecionados
 				- etapa 3:
 					- resumo
 						- aqui listo um resumo do processo seletivo
@@ -184,7 +184,7 @@ export class AgendamentoFormulario extends Component {
 	}
 
 	async handleEditSubmit(token, data) {
-		const result = await editSchedule(this.props.data.agendamentoId, token, data)
+		const result = await editSchedule(this.props.data.entrevistaId, token, data)
 		if (result) {
 			this.props.callback()
 			this.clearForm()
@@ -229,11 +229,11 @@ export class AgendamentoFormulario extends Component {
 		return (
 			<form
 				onSubmit={this.handleSubmit}
-				id="agendamentos"
+				id="entrevistas"
 				className='form'
 			>
 				{<div className="section section-1">
-					<h2 className="subtitle">Agendamento</h2>
+					<h2 className="subtitle">Entrevista</h2>
 					<label htmlFor="inp-nome" className="label">
 						Motivo
 						<input
@@ -320,7 +320,7 @@ export class AgendamentoFormulario extends Component {
 						onClick={this.handleSubmit} 
 						type="button" 
 						className="button">
-						{this.props.edit ? 'Editar Agendamento' : 'Criar Agendamento'}
+						{this.props.edit ? 'Editar Entrevista' : 'Criar Entrevista'}
 					</button>
 				</div>
 			</form>
@@ -328,4 +328,4 @@ export class AgendamentoFormulario extends Component {
 	}
 }
 
-export default AgendamentoFormulario
+export default EntrevistaFormulario

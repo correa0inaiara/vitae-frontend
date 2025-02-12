@@ -19,15 +19,16 @@
 
 .section-name {
 	font-weight: bold;
+	color: var(--text-orange-color);
 	margin-bottom: 15px;
 }
 
 .subtitle {
 	padding-bottom: 10px;
-    color: var(--background-terciary-color);
-    font-size: 20px;
-    margin: 30px 0;
-    border-bottom: 1px solid var(--background-terciary-color);
+	color: var(--button-dark-blue-color);
+	font-size: 20px;
+	margin: 30px 0;
+	border-bottom: 1px solid var(--button-dark-blue-color);
 }
 
 .subtitle--center {
@@ -48,11 +49,25 @@
 	margin-bottom: 20px;
 	width: 100%;
 	font-weight: bold;
+	color: var(--button-darker-blue-color);
 }
 
 .label input {
 	margin-top: 5px;
+	border-radius: 10px;
+	height: 20px;
+	color: var(--text-orange-color);
+	border: 2px solid var(--button-darker-blue-color)
 }
+
+.label input:focus-visible {
+	outline: none;
+	border: 2px solid var(--button-dark-yellow-color)
+}
+
+/* .label:focus-within {
+	color: 2px solid var(--button-dark-yellow-color)
+} */
 
 .error-message {
 	margin-top: 5px;
@@ -105,6 +120,10 @@
 .selecao select {
 	width: 100%;
 	font-size: 15px;
+	border-radius: 10px;
+	color: var(--text-orange-color);
+	outline: none;
+	border: 2px solid var(--button-darker-blue-color);
 }
 
 .error-messages {
@@ -127,6 +146,10 @@
 	margin: 0 10px 10px 0;
 }
 
+.listagem-item p {
+	color: var(--text-orange-color);
+}
+
 .listagem-item .nome-rede {
 	font-weight: bold;
 	margin-right: 5px;
@@ -134,9 +157,9 @@
 
 .login-social {
 	flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .login-social .login-social__message {

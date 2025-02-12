@@ -104,14 +104,14 @@ class CadastroEmpresa extends React.Component {
 		}
 
 		this.handleOnChange = this.handleOnChange.bind(this);
-    	this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    	this.handleAddRedeSocial = this.handleAddRedeSocial.bind(this);
-    	this.handleValidations = this.handleValidations.bind(this);
-    	this.validacaoRegex = this.validacaoRegex.bind(this);
-    	this.checkValidations = this.checkValidations.bind(this);
-    	this.handleOnBlur = this.handleOnBlur.bind(this);
+		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+		this.handleAddRedeSocial = this.handleAddRedeSocial.bind(this);
+		this.handleValidations = this.handleValidations.bind(this);
+		this.validacaoRegex = this.validacaoRegex.bind(this);
+		this.checkValidations = this.checkValidations.bind(this);
+		this.handleOnBlur = this.handleOnBlur.bind(this);
 
-        this.storageChanged = this.storageChanged.bind(this);
+		this.storageChanged = this.storageChanged.bind(this);
 	}
 
 	componentDidMount() {
@@ -206,7 +206,7 @@ class CadastroEmpresa extends React.Component {
 								const user = {
 									token: loginResult.token,
 									usuarioId: loginResult.usuarioId,
-									tipoUsuario: loginResult.tipoUsuario,
+									roleUsuario: loginResult.roleUsuario,
 									loginSocialToken: _user.loginSocialToken
 								} 
 								localStorage.setItem("user", JSON.stringify(user))
@@ -235,7 +235,7 @@ class CadastroEmpresa extends React.Component {
 							const user = {
 								token: loginResult.token,
 								usuarioId: loginResult.usuarioId,
-								tipoUsuario: loginResult.tipoUsuario
+								roleUsuario: loginResult.roleUsuario
 							} 
 							localStorage.setItem("user", JSON.stringify(user))
 							this.props.redirect()
@@ -410,6 +410,7 @@ class CadastroEmpresa extends React.Component {
 
 	handleOnChange(event) {
 		const target = event.target;
+		console.log('event', event)
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
 
@@ -797,7 +798,7 @@ class CadastroEmpresa extends React.Component {
 						} 
 						type="submit" 
 						className="button">
-						Me cadastre
+						Me cadastrar
 					</button>
 				</div>
 			</form>

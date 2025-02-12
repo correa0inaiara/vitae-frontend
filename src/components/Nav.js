@@ -1,8 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {navigationItems} from "../config"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
+import Logo from './Logo';
 
 const Nav = () => {
 	const useAuth = () => {
@@ -47,18 +48,21 @@ const Nav = () => {
 	return (
 		<>
 			<nav id="navigation" className={`nav ${exibeMenuMobile ? 'active' : ''}`}>
-				<a 
-					onClick={toggleMenu}
-					className="menu">
-					<FontAwesomeIcon icon={faBars} />
-				</a>
+				<div className="nav-mobile">
+					<Logo className="nav-mobile__logo" />
+					<a 
+						onClick={toggleMenu}
+						className="menu">
+						<FontAwesomeIcon icon={faBars} />
+					</a>
+				</div>
 				<ul className={`nav-list ${exibeMenuMobile ? 'show' : ''}`}>
 					{user && (
 						<>
 							{
-								user.tipoUsuario === 'Administrador' ? (
+								user.roleUsuario === 'Administrador' ? (
 									navigationItems.menuLogado.map((item) => (	
-										(item.role === user.tipoUsuario) ? (
+										(item.role === user.roleUsuario) ? (
 											<li key={item.text} className="nav-item">
 												<Link
 													onClick={toggleMenu} 
@@ -70,7 +74,7 @@ const Nav = () => {
 									))
 								) : (
 									navigationItems.menuLogado.map((item) => (	
-										!item.role || (item.role === user.tipoUsuario) ? (
+										!item.role || (item.role === user.roleUsuario) ? (
 											<li key={item.text} className="nav-item">
 												<Link
 													onClick={toggleMenu} 

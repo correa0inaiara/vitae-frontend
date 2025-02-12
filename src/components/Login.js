@@ -25,10 +25,10 @@ const Login = () => {
 				const user = {
 					token: json.token,
 					usuarioId: json.usuarioId,
-					tipoUsuario: json.tipoUsuario
+					roleUsuario: json.roleUsuario
 				}
 				localStorage.setItem("user", JSON.stringify(user))
-				if (user.tipoUsuario === 'Administrador') {
+				if (user.roleUsuario === 'Administrador') {
 					navigate("/relatorios")
 				} else {
 					navigate("/dashboard")
